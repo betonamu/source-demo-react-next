@@ -1,6 +1,10 @@
+import React from "react";
+import Home from "../components/Home";
 
-export default function Home() {
-  return (
-    <h1 style={{fontFamily:'sans-serif',textAlign:'center'}}>PROJECT CORE REACTJS WITH NEXTJS EXAMPLE</h1>
-  )
+const HomePage = () => {
+    return (
+        <Home/>
+    )
 }
+
+export default HomePage;
