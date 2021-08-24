@@ -1,28 +1,17 @@
 import React from "react";
-import LifeCycle from "./LifeCycle";
+import CounterContext from "../../contexts/Counter/CounterContext";
 
-class Home extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            data: 0
-        }
-        this.setNewNumber = this.setNewNumber.bind(this)
-    };
-
-    setNewNumber() {
-        this.setState({data: this.state.data + 1})
-    }
-
-    render() {
-        return (
-            <>
-                <button onClick = {this.setNewNumber}>INCREMENT</button>
-                <LifeCycle number={this.state.data}/>
-            </>
-        );
-    }
+const Home = () => {
+    return (
+        <CounterContext.Consumer>
+            {({ updateNumber, number }) =>
+                <>
+                    <button onClick={() => updateNumber()}>INCREMENT</button>
+                    <b>{number}</b>
+                </>
+            }
+        </CounterContext.Consumer>
+    );
 }
 
 export default Home;
