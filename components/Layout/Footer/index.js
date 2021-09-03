@@ -1,8 +1,9 @@
 import React from 'react';
-const Header = () => {
+
+const Footer = () => {
     return (
-        <nav>This is header</nav>
+        <footer style={{position: 'absolute', bottom: 0}}>This is footer</footer>
     );
 }
 
-export  default Header;
+export default Footer;
