@@ -8,18 +8,18 @@ class Home extends React.Component {
         this.state = {
             data: 0
         }
-        this.setNewNumber = this.setNewNumber.bind(this)
+        //this.setNewNumber = this.setNewNumber.bind(this)
     };
 
-    setNewNumber() {
-        this.setState({data: this.state.data + 1})
+    setNewNumber(that) {
+        that.setState({ data: that.state.data + 1 });
     }
 
     render() {
         return (
             <>
-                <button onClick = {this.setNewNumber}>INCREMENT</button>
-                <LifeCycle number={this.state.data}/>
+                <button onClick={()=>this.setNewNumber(this)}>INCREMENT</button>
+                <LifeCycle number={this.state.data} />
             </>
         );
     }
