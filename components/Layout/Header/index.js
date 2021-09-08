@@ -7,7 +7,7 @@ const Header = () => {
         <Container>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Xiuren</a>
+                    <a class="navbar-brand" href="#"></a>
                     <button class="navbar-toggler" type="button">
                         <span class="navbar-toggler-icon"></span>
                     </button>

@@ -1,21 +1,29 @@
 import React from "react";
-import Container from "../Common/Container";
-import ModelItem from "../Common/ModelItem";
-
+import LifeCycle from "./LifeCycle";
 
 import styles from "./Home.module.scss";
 
-const Home = () => {
-    const arr = Array.from(Array(67).keys())
-    return (
-        <Container>
-            <div className={styles.homeWrapper}>
-                {arr.map(item => (
-                    <ModelItem item={item}/>
-                ))}
-            </div>
-        </Container>
-    )
+class Home extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            data: 0
+        }
+        //this.setNewNumber = this.setNewNumber.bind(this)
+    };
+
+    setNewNumber(that) {
+        that.setState({ data: that.state.data + 1 });
+    }
+
+    render() {
+        return (
+            <>
+                <button onClick={()=>this.setNewNumber(this)}>INCREMENT</button>
+                <LifeCycle number={this.state.data} />
+            </>
+        );
+    }
 }
 
 export default Home;
