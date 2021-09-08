@@ -1,0 +1,13 @@
+@mixin mediumScreen {
+    @media screen and (max-width: #{$medium-screen}) {
+        @content;
+    }
+}
+
+@mixin button {
+    outline: none;
+    cursor: pointer;
+    &:hover {
+        outline: none;
+    }
+}
