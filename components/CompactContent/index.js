@@ -24,7 +24,7 @@ const CompactContent = ({ compactHeight = 300 }) => {
 
     return (
         <div className={classNames({
-            [styles.compactContent]: true,
+            [styles.CompactContent]: true,
             [styles.hasToggle]: isSeeMore,
         })}>
             <div className={styles.body}

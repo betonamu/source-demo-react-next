@@ -1,4 +1,6 @@
-module.exports = ({
+const withImages = require('next-images')
+
+module.exports = withImages({
     webpack: (config) => {
         const { rules } = config.module;
         // Find the array of "style rules" in the webpack config.
