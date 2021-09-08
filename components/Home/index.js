@@ -13,6 +13,8 @@ class Home extends React.Component {
 
     setNewNumber(that) {
         that.setState({ data: that.state.data + 1 });
+
+        
     }
 
     render() {
