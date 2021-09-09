@@ -1,6 +1,6 @@
 .header {
   background-color: #0f62f9;
-  padding: 1% 0;
+  padding-top: 1%;
   .top-header {
     display: flex;
     color: white;
@@ -28,14 +28,12 @@
 
     .category {
       display: flex;
-      align-items: center;
       margin: 0;
+      align-items: center;
       li {
-        display: flex;
-        align-items: center;
-        grid-gap: 6px;
         list-style-type: none;
         margin-left: 16px;
+        padding: 0 6px;
 
         ::after {
           border: 1px solid #9ebaed;
@@ -43,10 +41,135 @@
           height: 19px;
         }
       }
+
+      .language {
+        position: relative;
+
+        .sub-language {
+          position: absolute;
+          display: none;
+          background-color: white;
+          border-radius: 12px;
+          padding: 10% 5%;
+          width: 100%;
+          left: 0;
+
+          li {
+            margin: 5% 0;
+          }
+
+          a {
+            color: black;
+          }
+        }
+      }
+
+      .language:hover {
+        .sub-language {
+          display: block;
+        }
+      }
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      grid-gap: 6px;
+      align-items: center;
     }
   }
 
   .bottom-header {
     padding-top: 2%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .logo {
+    }
+
+    .button-category {
+      background-color: white;
+      border: none;
+      padding: 13px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+
+      span {
+        margin: 0 6px;
+      }
+    }
+
+    .search-box {
+      width: 38%;
+
+      form {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        padding: 12px 12px;
+        border-radius: 12px;
+      }
+
+      input {
+        border: none;
+        width: 90%;
+        outline: none;
+      }
+
+      button {
+        background-color: white;
+        border: none;
+      }
+
+      ul {
+        padding: 0;
+      }
+
+      li {
+        margin-right: 16px;
+        display: inline;
+        list-style-type: none;
+      }
+
+      small {
+        color: white;
+      }
+    }
+
+    .address {
+      background-color: #003cbf;
+      width: 16%;
+      padding: 1px 8px;
+      border-radius: 12px;
+      justify-content: center;
+      align-items: center;
+      color: white;
+
+      a {
+        color: white;
+      }
+
+      span {
+        font-weight: bold;
+      }
+    }
+
+    .cart-button {
+      color: white;
+      background-color: #003cbf;
+      padding: 13px;
+      border-radius: 12px;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+
+      svg {
+        margin-left: 6px;
+      }
+    }
   }
 }
