@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Slider from './Slider';
 import Banner from './Banner';
 import Container from '../../Common/Container'
