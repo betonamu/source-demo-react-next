@@ -2,7 +2,6 @@ import React from "react";
 
 import Container from "../../Common/Container";
 import styles from "./Header.module.scss";
-import logo from "../../../public/images/pmc-logo.svg";
 
 const Header = () => {
   return (
