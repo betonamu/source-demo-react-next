@@ -1,6 +1,26 @@
+@import "../../../asstes/scss/global.scss";
+
+@include smallScreen {
+  .header {
+    padding: 0 2%;
+    border-bottom-left-radius: 50% 35px;
+    border-bottom-right-radius: 50% 35px;
+  }
+}
+
+@include tabletScreen {
+  .header {
+    padding: 0 2%;
+    border-bottom-left-radius: 50% 35px;
+    border-bottom-right-radius: 50% 35px;
+  }
+}
+
 .header {
   background-color: #0f62f9;
   padding-top: 1%;
+  margin-bottom: 40px;
+
   .top-header {
     display: flex;
     color: white;
@@ -32,7 +52,6 @@
       align-items: center;
       li {
         list-style-type: none;
-        margin-left: 16px;
         padding: 0 6px;
 
         ::after {
@@ -40,6 +59,10 @@
           opacity: 0.5;
           height: 19px;
         }
+      }
+
+      li:nth-child(n + 2) {
+        border-left: 1px solid #9ebaedab;
       }
 
       .language {
@@ -87,30 +110,35 @@
     justify-content: space-between;
 
     .logo {
-    }
+      width: 17%;
 
-    .button-category {
-      background-color: white;
-      border: none;
-      padding: 13px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-
-      span {
-        margin: 0 6px;
+      svg {
+        width: 100%;
       }
     }
 
+    .button-category {
+      width: 12%;
+      background-color: white;
+      border: none;
+      margin-top: 1px;
+      padding: 12px 1%;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     .search-box {
-      width: 38%;
+      width: 40%;
 
       form {
         width: 100%;
+        margin-top: 1px;
         display: flex;
         justify-content: space-between;
         background-color: white;
-        padding: 12px 12px;
+        padding: 11px 2%;
         border-radius: 12px;
       }
 
@@ -130,7 +158,7 @@
       }
 
       li {
-        margin-right: 16px;
+        margin-right: 2%;
         display: inline;
         list-style-type: none;
       }
@@ -142,11 +170,10 @@
 
     .address {
       background-color: #003cbf;
-      width: 16%;
-      padding: 1px 8px;
+      margin-top: 1px;
+      width: 18%;
+      padding: 1px 1.5%;
       border-radius: 12px;
-      justify-content: center;
-      align-items: center;
       color: white;
 
       a {
@@ -159,17 +186,102 @@
     }
 
     .cart-button {
+      width: 11%;
       color: white;
       background-color: #003cbf;
-      padding: 13px;
+      margin-top: 1px;
+      padding: 13px 1.5%;
       border-radius: 12px;
-      justify-content: center;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
       text-decoration: none;
+    }
+  }
 
-      svg {
-        margin-left: 6px;
+  .top-header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left {
+      width: 35%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      grid-gap: 7%;
+      .button-category {
+        color: white;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+
+        svg path {
+          fill: white;
+          stroke: white;
+        }
       }
+
+      .location {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        color: white;
+      }
+    }
+
+    .logo {
+      width: 30%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .right {
+      width: 35%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      grid-gap: 14%;
+      .login {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 12px;
+      }
+
+      .cart {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .bottom-header-mobile {
+    position: relative;
+    height: 50px;
+    form {
+      position: absolute;
+      top: 5%;
+      width: 100%;
+      margin-top: 1px;
+      display: flex;
+      justify-content: space-between;
+      background-color: white;
+      padding: 11px 2%;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgb(15 61 145 / 12%);
+    }
+
+    input {
+      border: none;
+      width: 90%;
+      outline: none;
+    }
+
+    button {
+      background-color: white;
+      border: none;
     }
   }
 }
