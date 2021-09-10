@@ -1,0 +1,8 @@
+@import "../../asstes/scss/global.scss";
+
+.home-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    margin: -$padding;
+    padding-top: 40px;
+}
