@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import useDevices from "../../../../hooks/useDevices";
 
 const Desktop = ({ children }) => {
     const { isDesktop } = useDevices();
@@ -17,7 +17,7 @@ const Desktop = ({ children }) => {
 }
 
 const Mobile = ({ children }) => {
-    const { isDesktop } = useDevices();
+    const { isDesktop } = useDevicess();
     const [content, setContent] = useEffect(children);
 
     useEffect(() => {

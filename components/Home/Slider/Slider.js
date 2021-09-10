@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import classNames from "classnames";
+import Carousel from 'nuka-carousel';
+
 
 import BtnSlider from './BtnSlider';
-
 import { dataSlider } from './data';
 import styles from './scss/Slider.module.scss';
 
@@ -32,20 +33,13 @@ function Slider() {
     return (
         <div className={styles.bannerMain}>
             <div className={styles.containerSlider}>
-                {
-                    dataSlider.map((item, index) => (
-                        <div className={classNames(
-                            {
-                                [styles.activeAnim]: slideIndex === index + 1,
-                                [styles.slide]: slideIndex !== index + 1
-                            }
-                        )}>
-                            <img className={classNames(styles.imageSlider)} src={item.image} alt="image" />
-                        </div>
-                    ))
-                }
-                <BtnSlider moveSlide={nextSlide} direction={"next"} />
-                <BtnSlider moveSlide={prevSlide} direction={"prev"} />
+                <Carousel>
+                    {
+                        dataSlider.map((item) => (
+                            <img key={item.id} className={classNames(styles.imageSlider)} src={item.image} alt="image" />
+                        ))
+                    }
+                </Carousel>
             </div>
         </div>
     );
