@@ -3,6 +3,8 @@ import LifeCycle from "./LifeCycle";
 import styles from "./Home.module.scss";
 import Slider from "./Slider";
 
+import Icon from "../../asstes/icons/icon-plus-44.svg";
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -20,6 +22,7 @@ class Home extends React.Component {
         return (
             <>
                 <Slider />
+                <Icon/>
             </>
         );
     }

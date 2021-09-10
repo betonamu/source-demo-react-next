@@ -1,6 +1,9 @@
-const withImages = require('next-images')
+const withReactSvg = require('next-react-svg')
+const path = require('path')
 
-module.exports = withImages({
+module.exports = withReactSvg({
+    include: path.resolve(__dirname, 'asstes/icons'),
+
     webpack: (config) => {
         const { rules } = config.module;
         // Find the array of "style rules" in the webpack config.
