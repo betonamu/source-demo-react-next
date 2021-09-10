@@ -1,20 +1,17 @@
-import Carousel from 'nuka-carousel';
 import React from 'react';
+import Carousel from 'nuka-carousel';
+
 import NextBtn from '../../../asstes/icons/next.svg';
 import PrevBtn from '../../../asstes/icons/prev.svg';
+
 import { Desktop, Mobile } from '../../Common/Container/Media';
+
 import { dataMobile, dataSlider } from './data';
+
 import styles from './scss/Slider.module.scss';
 
 
-
-
-
-
-
-
 function Slider() {
-
 
     const configCarouselBtn = {
         nextButtonClassName: "btn-carousel next",

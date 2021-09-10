@@ -1,8 +1,11 @@
 import React from 'react';
+
 import Container from '../../Common/Container';
 import Banner from './Banner';
-import styles from './scss/Slider.module.scss';
 import Slider from './Slider';
+
+import styles from './scss/Slider.module.scss';
+
 
 
 
