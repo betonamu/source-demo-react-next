@@ -1,10 +1,12 @@
 import React from "react";
 import LifeCycle from "./LifeCycle";
-
 import styles from "./Home.module.scss";
+import Slider from "./Slider";
+
+import Icon from "../../asstes/icons/icon-plus-44.svg";
 
 class Home extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             data: 0
@@ -19,8 +21,8 @@ class Home extends React.Component {
     render() {
         return (
             <>
-                <button onClick={()=>this.setNewNumber(this)}>INCREMENT</button>
-                <LifeCycle number={this.state.data} />
+                <Slider />
+                <Icon/>
             </>
         );
     }
