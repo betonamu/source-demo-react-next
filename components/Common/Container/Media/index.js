@@ -1,36 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import useDevices from "../../../../hooks/useDevices";
 
 const Desktop = ({ children }) => {
     const { isDesktop } = useDevices();
-    const [content, setContent] = useEffect(children);
-
+    const [content, setContent] = useState(children);
     useEffect(() => {
         if (isDesktop) {
             setContent(children);
-        } else {
+        }
+        else {
             setContent(null);
         }
-    }, [children, isDesktop]);
-
+    }, [children, isDesktop])
     return content || <></>;
 }
 
 const Mobile = ({ children }) => {
-    const { isDesktop } = useDevicess();
-    const [content, setContent] = useEffect(children);
-
+    const { isDesktop, isMobile } = useDevices();
+    console.log(isMobile);
+    const [content, setContent] = useState();
     useEffect(() => {
         if (!isDesktop) {
             setContent(children);
-        } else {
+        }
+        else {
             setContent(null);
         }
     }, [children, isDesktop])
-
     return content || <></>;
 }
 
 export {
-    Desktop, Mobile
-}
+    Desktop,
+    Mobile
+};
