@@ -7,13 +7,12 @@ import { Desktop } from '../../Common/Container/Media'
 
 import styles from './scss/Slider.module.scss'
 
-function index(props) {
+function index() {
     return (
         <Container>
             <div className={styles.bannerWrapper}>
                 <Slider />
-                <Desktop><Banner /></Desktop>
-
+                <Banner />
             </div>
         </Container>
 
