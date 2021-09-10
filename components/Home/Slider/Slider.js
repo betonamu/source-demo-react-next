@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import classNames from "classnames";
+
 import BtnSlider from './BtnSlider';
+
 import { dataSlider } from './data';
 import styles from './scss/Slider.module.scss';
 
-function Slider(props) {
+function Slider() {
     const [slideIndex, setSlideIndex] = useState(1)
+    console.log(styles);
 
     const nextSlide = () => {
         if (slideIndex !== dataSlider.length) {
@@ -24,13 +28,19 @@ function Slider(props) {
         }
     }
 
+
     return (
         <div className={styles.bannerMain}>
             <div className={styles.containerSlider}>
                 {
                     dataSlider.map((item, index) => (
-                        <div className={slideIndex === index + 1 ? styles.activeAnim : styles.slide}>
-                            <img src={item.image} />
+                        <div className={classNames(
+                            {
+                                [styles.activeAnim]: slideIndex === index + 1,
+                                [styles.slide]: slideIndex !== index + 1
+                            }
+                        )}>
+                            <img className={classNames(styles.imageSlider)} src={item.image} alt="image" />
                         </div>
                     ))
                 }

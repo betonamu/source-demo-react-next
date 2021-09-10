@@ -1,6 +1,9 @@
 import React from 'react';
-import styles from './scss/Slider.module.scss'
+
 import { dataBanner } from './data';
+
+import styles from './scss/Slider.module.scss'
+
 
 function Banner(props) {
     return (
