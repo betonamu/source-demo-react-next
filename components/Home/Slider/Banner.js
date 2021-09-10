@@ -7,7 +7,7 @@ import { dataBanner } from './data';
 import styles from './scss/Slider.module.scss'
 
 
-function Banner(props) {
+function Banner() {
     return (
         <Desktop>
             <div className={styles.subBanner}>

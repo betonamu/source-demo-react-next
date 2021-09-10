@@ -1,8 +1,13 @@
-import classNames from "classnames";
 import Carousel from 'nuka-carousel';
 import React from 'react';
-import { dataSlider } from './data';
+import NextBtn from '../../../asstes/icons/next.svg';
+import PrevBtn from '../../../asstes/icons/prev.svg';
+import { Desktop, Mobile } from '../../Common/Container/Media';
+import { dataMobile, dataSlider } from './data';
 import styles from './scss/Slider.module.scss';
+
+
+
 
 
 
@@ -10,11 +15,12 @@ import styles from './scss/Slider.module.scss';
 
 function Slider() {
 
+
     const configCarouselBtn = {
         nextButtonClassName: "btn-carousel next",
         prevButtonClassName: "btn-carousel prev",
-        nextButtonText: <img src={"./icons/next.png"} />,
-        prevButtonText: <img src={"./icons/prev.png"} />,
+        nextButtonText: <NextBtn />,
+        prevButtonText: <PrevBtn />,
         pagingDotsStyle: {
             fill: 'rgba(93, 172, 70, 1)'
         },
@@ -49,13 +55,25 @@ function Slider() {
     return (
         <div className={styles.bannerMain}>
             <div className={styles.containerSlider}>
-                <Carousel defaultControlsConfig={configCarouselBtn} autoplay={true} wrapAround={true}>
-                    {
-                        dataSlider.map((item) => (
-                            <img key={item.id} className={classNames(styles.imageSlider)} src={item.image} alt="image" />
-                        ))
-                    }
-                </Carousel>
+                <Desktop>
+                    <Carousel defaultControlsConfig={configCarouselBtn} autoplay={true} wrapAround={true}>
+                        {
+                            dataSlider.map((item) => (
+                                <img key={item.id} className={styles.imageSlider} src={item.image} alt="image" />
+                            ))
+                        }
+                    </Carousel>
+                </Desktop>
+
+                <Mobile>
+                    <Carousel defaultControlsConfig={configCarouselBtn} renderCenterRightControls renderCenterLeftControls autoplay={true} wrapAround={true}>
+                        {
+                            dataMobile.map((item) => (
+                                <img key={item.id} className={styles.imageSlider} src={item.image} alt="image" />
+                            ))
+                        }
+                    </Carousel>
+                </Mobile>
             </div>
         </div>
     );
