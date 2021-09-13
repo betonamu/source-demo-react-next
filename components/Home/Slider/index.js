@@ -1,12 +1,13 @@
 import React from 'react';
 
-import Slider from './Slider';
+import Container from '../../Common/Container';
 import Banner from './Banner';
-import Container from '../../Common/Container'
+import Slider from './Slider';
 
-import styles from './scss/Slider.module.scss'
+import styles from './scss/Slider.module.scss';
 
-function index(props) {
+
+function index() {
     return (
         <Container>
             <div className={styles.bannerWrapper}>

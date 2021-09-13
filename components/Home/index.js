@@ -1,10 +1,7 @@
 import React from "react";
-import LifeCycle from "./LifeCycle";
-import styles from "./Home.module.scss";
-import Slider from "./Slider";
-import { Mobile } from "../Common/Container/Media";
-
 import Icon from "../../asstes/icons/icon-plus-44.svg";
+import Slider from "./Slider";
+
 
 class Home extends React.Component {
     constructor(props) {
@@ -24,10 +21,8 @@ class Home extends React.Component {
     render() {
         return (
             <>
-                <Mobile>
-                    <Slider />
-                    <Icon />
-                </Mobile>
+                <Slider />
+                <Icon />
             </>
         );
     }
