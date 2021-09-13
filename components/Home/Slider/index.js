@@ -7,8 +7,6 @@ import Slider from './Slider';
 import styles from './scss/Slider.module.scss';
 
 
-
-
 function index() {
     return (
         <Container>

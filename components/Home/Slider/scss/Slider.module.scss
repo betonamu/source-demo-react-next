@@ -6,7 +6,8 @@
 
     .banner-main {
         position: relative;
-        width: 70%;
+        display: flex;
+        flex: 1;
         height: auto;
 
         .container-slider {
@@ -44,29 +45,4 @@
             }
         }
     }
-}
-
-@media screen and (max-width: 576px) {
-    .banner-wrapper {
-        display: block;
-        .banner-main {
-            width: 100%;
-        }
-    }
-    // .sub-banner{
-    //     display: none;
-    // }
-}
-
-@media screen and (min-width: 576px) and (max-width: 1024px) {
-    .banner-wrapper {
-        display: block;
-        .banner-main {
-            width: 100%;
-            height: auto;
-        }
-    }
-    // .sub-banner{
-    //     display: none;
-    // }
 }

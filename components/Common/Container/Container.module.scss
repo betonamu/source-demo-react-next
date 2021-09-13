@@ -1,8 +1,3 @@
-@import "../../../asstes/scss/global.scss";
-
 .container-wrapper {
     background-color: white;
-    @include smallScreen {
-        background-color: red;
-    }
 }

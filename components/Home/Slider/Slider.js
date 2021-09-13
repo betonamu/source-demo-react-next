@@ -71,6 +71,8 @@ function Slider() {
                         }
                     </Carousel>
                 </Mobile>
+
+
             </div>
         </div>
     );
