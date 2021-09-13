@@ -1,6 +1,7 @@
 import React from "react";
 
 import Container from "../../Common/Container";
+import Dropdown from "./Dropdown";
 import { Desktop, Mobile } from "../../Common/Container/Media/index";
 import styles from "./Header.module.scss";
 
@@ -34,6 +35,7 @@ const Header = () => {
       <Desktop>
         <div className={styles.header}>
           <Container>
+
             <div className={styles.topHeader}>
               <div className={styles.hotline}>
                 <div>
@@ -91,11 +93,18 @@ const Header = () => {
               <div className={styles.logo}>
                 <Logo />
               </div>
-              <button className={styles.buttonCategory}>
-                <IconCategory />
-                <span>Danh mục</span>
-                <IconDownCategory />
-              </button>
+              <div className={styles.itemWrapper}>
+
+                <button className={styles.buttonCategory}>
+                  <IconCategory />
+                  <span>Danh mục</span>
+                  <IconDownCategory />
+                </button>
+                <div className={styles.dropdownWrapper}>
+                  <Dropdown />
+                  <div className={styles.overlay}></div>
+                </div>
+              </div>
               <div className={styles.searchBox}>
                 <SearchForm />
                 <ul>
