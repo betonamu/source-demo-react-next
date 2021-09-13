@@ -1,8 +1,7 @@
 import React from 'react';
 import Carousel from 'nuka-carousel';
 
-import NextBtn from '../../../asstes/icons/next.svg';
-import PrevBtn from '../../../asstes/icons/prev.svg';
+import { NextBtn, PrevBtn } from '../../../asstes/icons';
 
 import { Desktop, Mobile } from '../../Common/Container/Media';
 
@@ -52,6 +51,7 @@ function Slider() {
     return (
         <div className={styles.bannerMain}>
             <div className={styles.containerSlider}>
+
                 <Desktop>
                     <Carousel defaultControlsConfig={configCarouselBtn} autoplay={true} wrapAround={true}>
                         {
@@ -71,7 +71,6 @@ function Slider() {
                         }
                     </Carousel>
                 </Mobile>
-
 
             </div>
         </div>
