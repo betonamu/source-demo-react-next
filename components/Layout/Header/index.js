@@ -1,20 +1,18 @@
 import React from "react";
-
 import Container from "../../Common/Container";
+import Dropdown from "./Dropdown";
 import { Desktop, Mobile } from "../../Common/Container/Media/index";
+
+import {
+  IconCart, IconCategory, IconDown, IconDownCategory, IconEnglish, IconLocation, IconPhone, IconSearch, IconUser, IconVietnamese, Logo
+} from "../../../asstes/icons";
+
+
 import styles from "./Header.module.scss";
 
-import Logo from "../../../asstes/icons/pmc-logo.svg";
-import IconPhone from "../../../asstes/icons/icon-phone.svg";
-import IconLocation from "../../../asstes/icons/icon-location.svg";
-import IconVietnamese from "../../../asstes/icons/icon-Vietnamese.svg";
-import IconDown from "../../../asstes/icons/icon-down.svg";
-import IconUser from "../../../asstes/icons/icon-user.svg";
-import IconCategory from "../../../asstes/icons/icon-category.svg";
-import IconDownCategory from "../../../asstes/icons/icon-down-category.svg";
-import IconSearch from "../../../asstes/icons/icon-search.svg";
-import IconCart from "../../../asstes/icons/icon-cart.svg";
-import IconEnglish from "../../../asstes/icons/icon-English.svg";
+
+
+
 
 const SearchForm = () => {
   return (
@@ -34,6 +32,7 @@ const Header = () => {
       <Desktop>
         <div className={styles.header}>
           <Container>
+
             <div className={styles.topHeader}>
               <div className={styles.hotline}>
                 <div>
@@ -91,11 +90,21 @@ const Header = () => {
               <div className={styles.logo}>
                 <Logo />
               </div>
-              <button className={styles.buttonCategory}>
-                <IconCategory />
-                <span>Danh mục</span>
-                <IconDownCategory />
-              </button>
+              <div className={styles.itemWrapper}>
+                <button className={styles.buttonCategory}>
+                  <IconCategory />
+                  <span>Danh mục</span>
+                  <IconDownCategory />
+                </button>
+                <div className={styles.category}>
+                  <div className="container">
+                    <div className={styles.dropdownWrapper}>
+                      <Dropdown />
+                      <div className={styles.overlay}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className={styles.searchBox}>
                 <SearchForm />
                 <ul>
