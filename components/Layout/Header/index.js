@@ -1,26 +1,18 @@
 import React from "react";
-
 import Container from "../../Common/Container";
 import Dropdown from "./Dropdown";
-
 import { Desktop, Mobile } from "../../Common/Container/Media/index";
+
+import {
+  IconCart, IconCategory, IconDown, IconDownCategory, IconEnglish, IconLocation, IconPhone, IconSearch, IconUser, IconVietnamese, Logo
+} from "../../../asstes/icons";
+
 
 import styles from "./Header.module.scss";
 
-import {
-  Polygon, 
-  Logo, 
-  IconPhone,
-  IconLocation,
-  IconVietnamese,
-  IconDown,
-  IconUser,
-  IconCategory,
-  IconDownCategory,
-  IconSearch,
-  IconCart,
-  IconEnglish
-} from "../../../asstes/icons";
+
+
+
 
 const SearchForm = () => {
   return (
@@ -104,10 +96,13 @@ const Header = () => {
                   <span>Danh mục</span>
                   <IconDownCategory />
                 </button>
-                <div className={styles.dropdownWrapper}>
-                  <Dropdown />
-                  
-                  <div className={styles.overlay}></div>
+                <div className={styles.category}>
+                  <div className="container">
+                    <div className={styles.dropdownWrapper}>
+                      <Dropdown />
+                      <div className={styles.overlay}></div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className={styles.searchBox}>

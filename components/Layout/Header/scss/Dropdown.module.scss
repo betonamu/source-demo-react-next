@@ -29,10 +29,24 @@
 }
 
 .dropdown-box {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 23%;
+}
 
+.dropdown-box:first-child::before {
+    position: absolute;
+    content: "";
+    top: -20px;
+    right: 0;
+    height: 2.5rem;
+    background-color: transparent;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid white;
+
+    transform: translateY(-100%);
 }
 
 .dropdown-item {

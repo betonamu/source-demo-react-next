@@ -10,7 +10,6 @@ function Item({ item }) {
             <div className={styles.itemName}>
                 {item.node.name}
             </div>
-
         </div>
     );
 }
