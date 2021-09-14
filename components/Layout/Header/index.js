@@ -2,20 +2,25 @@ import React from "react";
 
 import Container from "../../Common/Container";
 import Dropdown from "./Dropdown";
+
 import { Desktop, Mobile } from "../../Common/Container/Media/index";
+
 import styles from "./Header.module.scss";
 
-import Logo from "../../../asstes/icons/pmc-logo.svg";
-import IconPhone from "../../../asstes/icons/icon-phone.svg";
-import IconLocation from "../../../asstes/icons/icon-location.svg";
-import IconVietnamese from "../../../asstes/icons/icon-Vietnamese.svg";
-import IconDown from "../../../asstes/icons/icon-down.svg";
-import IconUser from "../../../asstes/icons/icon-user.svg";
-import IconCategory from "../../../asstes/icons/icon-category.svg";
-import IconDownCategory from "../../../asstes/icons/icon-down-category.svg";
-import IconSearch from "../../../asstes/icons/icon-search.svg";
-import IconCart from "../../../asstes/icons/icon-cart.svg";
-import IconEnglish from "../../../asstes/icons/icon-English.svg";
+import {
+  Polygon, 
+  Logo, 
+  IconPhone,
+  IconLocation,
+  IconVietnamese,
+  IconDown,
+  IconUser,
+  IconCategory,
+  IconDownCategory,
+  IconSearch,
+  IconCart,
+  IconEnglish
+} from "../../../asstes/icons";
 
 const SearchForm = () => {
   return (
@@ -94,7 +99,6 @@ const Header = () => {
                 <Logo />
               </div>
               <div className={styles.itemWrapper}>
-
                 <button className={styles.buttonCategory}>
                   <IconCategory />
                   <span>Danh mục</span>
@@ -102,6 +106,7 @@ const Header = () => {
                 </button>
                 <div className={styles.dropdownWrapper}>
                   <Dropdown />
+                  
                   <div className={styles.overlay}></div>
                 </div>
               </div>

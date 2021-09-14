@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
-import { dataDropdown } from './data';
-import Content from './Content';
+
+import Category from './Category';
 import Item from './Item';
-import styles from './scss/Dropdown.module.scss'
+
+import { dataDropdown } from './data';
+
+import styles from './scss/Dropdown.module.scss';
+
+
+
 
 
 function Dropdown() {
@@ -19,10 +25,9 @@ function Dropdown() {
             <div className={styles.dropdownBox}>
                 {
                     dataDropdown.search.edges.map((item, index) => (
-                        <Content dataDropdown={dataDropdown} item={item} onClick={() => setCurrentIndex(index)} active={index === currentIndex} handeChangeValue={handeChangeValue} />
+                        <Category dataDropdown={dataDropdown} item={item} onClick={() => setCurrentIndex(index)} active={index === currentIndex} handeChangeValue={handeChangeValue} />
                     ))
                 }
-
             </div>
             <div className={styles.dropdownBoxCenter}>
                 {

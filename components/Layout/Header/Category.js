@@ -1,9 +1,11 @@
-import classNames from 'classnames';
 import React from 'react';
+import classNames from 'classnames';
+
 import { NextBtn } from '../../../asstes/icons';
+
 import styles from './scss/Dropdown.module.scss';
 
-function Content({ item, onClick, active, handeChangeValue }) {
+function Category({ item, onClick, active, handeChangeValue }) {
 
     const handleActive = (name) => {
         onClick()
@@ -24,4 +26,4 @@ function Content({ item, onClick, active, handeChangeValue }) {
     );
 }
 
-export default Content;
+export default Category;
