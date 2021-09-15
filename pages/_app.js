@@ -3,6 +3,8 @@ import withLocale from '../hocs/withLocale';
 import Layout from "../components/Layout";
 import CounterProvider from "../contexts/Counter/CounterProvider";
 
+import 'antd/dist/antd.css';
+
 function MyApp({Component, pageProps}) {
     return (
         <CounterProvider>
