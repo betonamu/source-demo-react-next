@@ -1,13 +1,9 @@
 import React from 'react';
 import Form from '../Form' 
 import { Breadcrumb, Layout, Menu, Row, PageHeader } from 'antd'
-
 import { dataSider } from './data';
-
 import { Dashboard } from '../../../asstes/icons';
-
 const { Sider, Content } = Layout
-
 function index() {
     return (
         <Layout>

@@ -1,1 +1,1 @@
-export * from './dataSider'
+export * from './data'
