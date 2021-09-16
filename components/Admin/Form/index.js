@@ -12,7 +12,6 @@ function index() {
 
     const onReset = () => {
         form.resetFields()
-        
     }
 
     return (
