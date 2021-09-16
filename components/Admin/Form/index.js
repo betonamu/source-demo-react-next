@@ -12,6 +12,7 @@ function index() {
 
     const onReset = () => {
         form.resetFields()
+        
     }
 
     return (
@@ -41,7 +42,6 @@ function index() {
                         </Select>
                     </Form.Item>
                 </Col>
-
             </Row>
             <Row >
                 <Col span={14}>
