@@ -1,7 +1,8 @@
 import React from 'react';
-
 import { Button, Col, DatePicker, Form, Input, Row, Select } from 'antd';
 import { FilterOutlined } from "@ant-design/icons"
+
+import styles from './scss/Form.module.scss'
 
 
 const { Option } = Select;
@@ -15,7 +16,7 @@ function index() {
     }
 
     return (
-        <Form form={form} labelCol={{ span: 10 }} style={{ background: 'white', margin: '20px 20px', padding: '20px 20px' }}>
+        <Form form={form} labelCol={{ span: 10 }} className={styles.antForm}>
             <Row>
                 <Col span={7}>
                     <Form.Item label="Mã đơn hàng" name="code">
@@ -52,7 +53,7 @@ function index() {
                     <Form.Item>
                         <Button
                             htmlType="button"
-                            style={{ margin: '0 8px' }}
+                            className={styles.antBtn}
                             onClick={onReset}
                         >
                             Xóa

@@ -8,9 +8,6 @@ import { dataDropdown } from './data';
 import styles from './scss/Dropdown.module.scss';
 
 
-
-
-
 function Dropdown() {
     const [filter, setFilter] = useState('dược-phẩm')
     const [currentIndex, setCurrentIndex] = useState(0);
