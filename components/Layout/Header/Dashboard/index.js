@@ -1,14 +1,12 @@
 import React from 'react';
 import { Breadcrumb, Layout, PageHeader } from 'antd';
 
-import Form from '../Form';
-
-import styles from './scss/Dashboard.module.scss';
-
+import styles from "./scss/Dashboard.module.scss"
 
 const { Content } = Layout
 
-function index({ tab }) {
+function index({ tab, children }) {
+    console.log(styles)
     return (
         <Content>
             <Breadcrumb className={styles.antBreadcrumb}>
@@ -17,13 +15,13 @@ function index({ tab }) {
                     {tab}
                 </Breadcrumb.Item>
             </Breadcrumb>
-            <PageHeader className={styles.sitePageHeader}
+            <PageHeader className={styles.antPageLayout} style={{background:'white'}}
                 title={tab}
                 onBack={() => null}
             >
             </PageHeader>
             <Content>
-                <Form />
+                {children}
             </Content>
             <Content>
                 {/* table */}

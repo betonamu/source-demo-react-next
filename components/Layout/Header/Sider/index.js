@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 
-import { Dashboard } from '../../../asstes/icons';
+import { Dashboard } from '../../../../asstes/icons';
 
 import { dataSider } from './data';
 
