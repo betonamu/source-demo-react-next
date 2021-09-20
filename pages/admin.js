@@ -1,8 +1,8 @@
 import React from 'react';
-import Form from "../components/Admin/Form"
+import Order from "../components/Admin/Order"
 
 function admin() {
-    return (<Form />)
+    return (<Order />)
 }
 
 export default admin;

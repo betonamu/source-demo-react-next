@@ -24,6 +24,8 @@ import TaiXe from "./tai-xe.svg"
 import Dashboard from "./dashboard.svg"
 import DonHang from "./don-hang.svg"
 import NhanVien from "./nhan-vien.svg"
+import Circle from "./circle.svg"
+
 
 export {
     NextBtn,
@@ -49,5 +51,6 @@ export {
     TaiXe,
     Dashboard,
     DonHang,
-    NhanVien
+    NhanVien,
+    Circle
 };

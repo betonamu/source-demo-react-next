@@ -15,17 +15,14 @@ function index({ tab, children }) {
                     {tab}
                 </Breadcrumb.Item>
             </Breadcrumb>
-            <PageHeader className={styles.antPageLayout} style={{background:'white'}}
+            <PageHeader className={styles.antPageLayout}
                 title={tab}
                 onBack={() => null}
             >
             </PageHeader>
-            <Content>
-                {children}
-            </Content>
-            <Content>
-                {/* table */}
-            </Content>
+
+            {children}
+
         </Content>
     );
 }
