@@ -21,8 +21,8 @@ class Home extends React.Component {
     render() {
         return (
             <>
-                <Slider />
-                <Icon />
+                {/* <Slider />
+                <Icon /> */}
             </>
         );
     }
