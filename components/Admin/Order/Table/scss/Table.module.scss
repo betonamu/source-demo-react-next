@@ -20,6 +20,9 @@
 .ant-col-12 {
     display: flex !important;
     align-items: center;
+    justify-content: flex-end;
+    padding: 0 40px !important;
+
 }
 
 .status {
@@ -28,4 +31,10 @@
 }
 .circle{
     margin: 0 5px;
+}
+
+.ant-pagination{
+    padding: 20px 20px !important;
+    display: flex;
+    justify-content: flex-end;
 }

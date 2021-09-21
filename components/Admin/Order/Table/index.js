@@ -3,6 +3,7 @@ import React from 'react';
 import { Button, Col, Row, Table, Tag } from 'antd';
 import { CopyOutlined, DeleteOutlined, PlusOutlined, RedoOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
+import { Pagination } from 'antd';
 import { Content } from 'antd/lib/layout/layout';
 
 import { dataTable } from './data/dataTable';
@@ -105,9 +106,10 @@ function index() {
                     <DeleteOutlined />
                 </Col>
             </Row>
-            <Table pagination={{ pageSize: 10 }} columns={columns} rowSelection={true} dataSource={dataTable}>
-
+            <Table pagination={false} columns={columns} rowSelection={true} dataSource={dataTable}>
             </Table>
+            <Pagination className={styles.antPagination} defaultCurrent={1} />
+
         </Content>
     );
 }

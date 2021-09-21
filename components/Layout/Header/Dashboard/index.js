@@ -6,7 +6,6 @@ import styles from "./scss/Dashboard.module.scss"
 const { Content } = Layout
 
 function index({ tab, children }) {
-    console.log(styles)
     return (
         <Content>
             <Breadcrumb className={styles.antBreadcrumb}>

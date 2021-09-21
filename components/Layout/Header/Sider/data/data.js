@@ -1,14 +1,15 @@
 import { uuid } from 'uuidv4';
 import {
     Car,
-    CongNo,
-    KhachHang,
-    NhaCungCap,
-    NoiDung,
-    PhanQuyen,
-    TaiXe,
-    DonHang,
-    NhanVien
+    Debt,
+    Customer,
+    Supplier,
+    Content,
+    Decentralization,
+    Driver,
+    OrderIcon,
+    Staff,
+
 } from "../../../../../asstes/icons";
 
 
@@ -17,7 +18,7 @@ export const dataSider = [
         id: uuid(),
         title: "Đơn hàng",
         subTitle: "Lorem",
-        icon: <DonHang />,
+        icon: <OrderIcon />,
     },
     {
         id: uuid(),
@@ -29,42 +30,42 @@ export const dataSider = [
         id: uuid(),
         title: "Khách hàng",
         subTitle: "Lorem",
-        icon: <KhachHang />,
+        icon: <Customer />,
     },
     {
         id: uuid(),
         title: "Nhà cung cấp",
         subTitle: "Lorem",
-        icon: <NhaCungCap />,
+        icon: <Supplier />,
     },
     {
         id: uuid(),
         title: "Công nợ",
         subTitle: "Lorem",
-        icon: <CongNo />,
+        icon: <Debt />,
     },
     {
         id: uuid(),
         title: "Nội dung",
         subTitle: "Lorem",
-        icon: <NoiDung />,
+        icon: <Content />,
     },
     {
         id: uuid(),
         title: "Tài xế",
         subTitle: "Lorem",
-        icon: <TaiXe />,
+        icon: <Driver />,
     },
     {
         id: uuid(),
         title: "Nhân viên",
         subTitle: "Lorem",
-        icon: <NhanVien />,
+        icon: <Staff />,
     },
     {
         id: uuid(),
         title: "Phân quyền",
         subTitle: "Lorem",
-        icon: <PhanQuyen />,
+        icon: <Decentralization />,
     },
 ]
