@@ -5,6 +5,7 @@ import { Dashboard } from '../../../../asstes/icons';
 
 import { dataSider } from './data';
 
+import styles from '../scss/Admin.module.scss'
 
 const { Sider } = Layout
 
@@ -15,7 +16,7 @@ function index({ handleGetTab }) {
     }
 
     return (
-        <Sider>
+        <Sider className={styles.antLayoutSiderChildren}>
             <Menu defaultSelectedKeys={['0']} mode="inline">
                 <Menu.Item key="Dashboard" icon={<Dashboard />}>
                     Dashboard

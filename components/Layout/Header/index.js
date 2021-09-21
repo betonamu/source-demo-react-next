@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layout, Row } from 'antd';
+import { Layout } from 'antd';
 
 import Container from '../../Common/Container';
 import Dashboards from './Dashboard';
@@ -21,14 +21,8 @@ function index({ children }) {
     return (
         <Container >
             <Layout className={styles.antBack}>
-                <Layout>
-                    <Row>
-                        <Sider handleGetTab={handleGetTab} />
-                    </Row>
-                    <Layout>
-                        <Dashboards tab={tab} children={children}/>
-                    </Layout>
-                </Layout>
+                <Sider handleGetTab={handleGetTab} />
+                <Dashboards tab={tab} children={children} />
             </Layout>
         </Container>
     );

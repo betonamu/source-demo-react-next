@@ -53,12 +53,11 @@ function index() {
                     <Form.Item>
                         <Button
                             htmlType="button"
-                            className={styles.antBtn}
                             onClick={onReset}
                         >
                             Xóa
                         </Button>
-                        <Button type="primary" htmlType="submit" icon={< FilterOutlined />}>
+                        <Button type="primary" htmlType="submit" icon={< FilterOutlined />} className={styles.antBtn}>
                             Lọc
                         </Button>
                     </Form.Item>

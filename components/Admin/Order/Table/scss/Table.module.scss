@@ -1,0 +1,40 @@
+.ant-layout-content {
+    margin: 20px 20px;
+    background: white;
+}
+
+.ant-typography {
+    padding: 10px 20px;
+}
+
+.ant-row {
+    align-items: center;
+}
+
+.ant-btn {
+    margin: 0 5px;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.ant-col-12 {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 40px !important;
+
+}
+
+.status {
+    display: flex;
+    align-items: center;
+}
+.circle{
+    margin: 0 5px;
+}
+
+.ant-pagination{
+    padding: 20px 20px !important;
+    display: flex;
+    justify-content: flex-end;
+}

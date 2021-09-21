@@ -15,15 +15,17 @@ import IconCart from "./icon-cart.svg";
 import IconEnglish from "./icon-English.svg";
 
 import Car from "./car.svg";
-import CongNo from "./cong-no.svg"
-import KhachHang from "./khach-hang.svg"
-import NhaCungCap from "./nha-cung-cap.svg"
-import NoiDung from "./noi-dung.svg"
-import PhanQuyen from "./phan-quyen.svg"
-import TaiXe from "./tai-xe.svg"
+import Debt from "./cong-no.svg"
+import Customer from "./khach-hang.svg"
+import Supplier from "./nha-cung-cap.svg"
+import Content from "./noi-dung.svg"
+import Decentralization from "./phan-quyen.svg"
+import Driver from "./tai-xe.svg"
 import Dashboard from "./dashboard.svg"
-import DonHang from "./don-hang.svg"
-import NhanVien from "./nhan-vien.svg"
+import OrderIcon from "./don-hang.svg"
+import Staff from "./nhan-vien.svg"
+import Circle from "./circle.svg"
+
 
 export {
     NextBtn,
@@ -41,13 +43,14 @@ export {
     IconCart,
     IconEnglish,
     Car,
-    CongNo,
-    KhachHang,
-    NhaCungCap,
-    NoiDung,
-    PhanQuyen,
-    TaiXe,
+    Debt,
+    Customer,
+    Supplier,
+    Content,
+    Decentralization,
+    Driver,
     Dashboard,
-    DonHang,
-    NhanVien
+    OrderIcon,
+    Staff,
+    Circle
 };
