@@ -1,9 +1,14 @@
 import React from 'react';
-import { Button, Col, Row, Table, Tag, Typography, Pagination, Image } from 'antd';
-import { CopyOutlined, DeleteOutlined, PlusOutlined, RedoOutlined } from '@ant-design/icons';
+
+import { Button, Col, Row, Table} from 'antd';
+import { DeleteOutlined, PlusOutlined, RedoOutlined } from '@ant-design/icons';
+import { Typography} from 'antd';
+import { Pagination} from 'antd';
 import { Content } from 'antd/lib/layout/layout';
+
 import { dataTable } from './data/dataTable';
 import styles from './scss/Table.module.scss'
+
 const { Title } = Typography;
 
 const columns = [
