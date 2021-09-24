@@ -106,10 +106,8 @@ function index() {
                     <DeleteOutlined />
                 </Col>
             </Row>
-            <Table pagination={false} columns={columns} rowSelection={true} dataSource={dataTable}>
+            <Table className={styles.antPagination} pagination={{ pageSize:3 }} columns={columns} rowSelection={true} dataSource={dataTable}>
             </Table>
-            <Pagination className={styles.antPagination} defaultCurrent={1} />
-
         </Content>
     );
 }
