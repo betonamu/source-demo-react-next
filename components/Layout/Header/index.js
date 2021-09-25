@@ -12,7 +12,7 @@ import styles from './scss/Admin.module.scss';
 
 function index({ children }) {
 
-    const [tab, setTab] = useState('Đơn hàng')
+    const [tab, setTab] = useState('Danh sách xe')
 
     const handleGetTab = (title) => {
         setTab(title)
