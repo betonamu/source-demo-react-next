@@ -9,13 +9,10 @@ import styles from './scss/Slider.module.scss';
 
 function index() {
     return (
-        <Container>
-            <div className={styles.bannerWrapper}>
-                <Slider />
-                <Banner />
-            </div>
-        </Container>
-
+        <div className={styles.bannerWrapper}>
+            <Slider />
+            <Banner />
+        </div>
     );
 }
 
