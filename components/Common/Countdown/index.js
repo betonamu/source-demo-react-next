@@ -16,13 +16,13 @@ function index({ timer }) {
 
     const timeOut = () => {
         if (timer[0].start <= hour && hour <= timer[0].end) {
-            setTimeOff(12)
+            setTimeOff(parseInt(timer[0].end))
         }
         else if (timer[1].start <= hour && hour <= timer[1].end) {
-            setTimeOff(16)
+            setTimeOff(parseInt(timer[1].end))
         }
         else if (timer[2].start <= hour && hour <= timer[2].end) {
-            setTimeOff(20)
+            setTimeOff(parseInt(timer[2].end))
         }
         return timeOff
     }
