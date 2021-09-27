@@ -1,5 +1,8 @@
 import React from 'react';
+
 import { Breadcrumb, Layout, PageHeader } from 'antd';
+
+import { Button, Col, Row} from 'antd';
 
 import styles from "./scss/Dashboard.module.scss"
 
@@ -14,14 +17,15 @@ function index({ tab, children }) {
                     {tab}
                 </Breadcrumb.Item>
             </Breadcrumb>
-            <PageHeader className={styles.antPageLayout}
-                title={tab}
-                onBack={() => null}
-            >
-            </PageHeader>
-
+            <Row className={styles.antPageLayout}>
+                <Col span={12} className={styles.antCol}>
+                    <PageHeader title={tab} onBack={() => null}></PageHeader>
+                </Col>
+                <Col span={12}>
+                    <Button type="primary" className={styles.flRight}>Cập nhật xe</Button>
+                </Col>
+            </Row>
             {children}
-
         </Content>
     );
 }

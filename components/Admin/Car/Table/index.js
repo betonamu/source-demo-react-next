@@ -58,7 +58,7 @@ export default function index() {
                     <Title level={5} className={styles.antTypography}>Tất cả</Title>
                 </Col>
                 <Col span={10} className={styles.antCol12}>
-                    <Button type="primary" htmlType="submit" icon={<PlusOutlined />} className={styles.antBtn}>
+                    <Button type="primary" href="./add-car" htmlType="submit" icon={<PlusOutlined />} className={styles.antBtn}>
                         Tạo mới xe
                     </Button>
                     <RedoOutlined className={styles.antBtn} />
