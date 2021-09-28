@@ -1,17 +1,22 @@
-import '../asstes/scss/index.scss';
+import { Provider } from "react-redux";
+
 import withLocale from '../hocs/withLocale';
 import Layout from "../components/Layout";
 import CounterProvider from "../contexts/Counter/CounterProvider";
+import store from "../redux/store";
 
 import 'antd/dist/antd.css';
+import '../asstes/scss/index.scss';
 
-function MyApp({Component, pageProps}) {
+const MyApp = ({ Component, pageProps }) => {
     return (
-        <CounterProvider>
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
-        </CounterProvider>
+        <Provider store={store}>
+            <CounterProvider>
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
+            </CounterProvider>
+        </Provider>
     );
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "../Common/Container";
+import CounterNav from "./Counter";
 import FlashSale from "./FlashSale";
 import Slider from "./Slider";
 
@@ -21,6 +22,7 @@ class Home extends React.Component {
             <Container>
                 <Slider />
                 < FlashSale />
+                <CounterNav/>
             </Container>
         );
     }
