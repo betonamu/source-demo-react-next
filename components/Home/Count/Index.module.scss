@@ -1,0 +1,29 @@
+.wrapper-count {
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 20%;
+
+    div {
+        background: #00a8ff;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        border-radius: 4px;
+    }
+
+    button {
+        border: none;
+        background: #00a8ff;
+        height: 30px;
+        padding: 0 10px;
+
+        font-size: 18px;
+        border-radius: 4px;
+        font-weight: 500;
+    }
+}
