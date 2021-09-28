@@ -13,6 +13,7 @@ import IconDownCategory from "./icon-down-category.svg";
 import IconSearch from "./icon-search.svg";
 import IconCart from "./icon-cart.svg";
 import IconEnglish from "./icon-English.svg";
+import Fire from "./fire.svg"
 
 import Car from "./car.svg";
 import Debt from "./cong-no.svg"
@@ -42,15 +43,5 @@ export {
     IconSearch,
     IconCart,
     IconEnglish,
-    Car,
-    Debt,
-    Customer,
-    Supplier,
-    Content,
-    Decentralization,
-    Driver,
-    Dashboard,
-    OrderIcon,
-    Staff,
-    Circle
+    Fire
 };

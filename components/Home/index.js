@@ -1,7 +1,7 @@
 import React from "react";
-import Icon from "../../asstes/icons/icon-plus-44.svg";
+import Container from "../Common/Container";
+import FlashSale from "./FlashSale";
 import Slider from "./Slider";
-
 
 class Home extends React.Component {
     constructor(props) {
@@ -14,16 +14,14 @@ class Home extends React.Component {
 
     setNewNumber(that) {
         that.setState({ data: that.state.data + 1 });
-
-
     }
 
     render() {
         return (
-            <>
-                {/* <Slider />
-                <Icon /> */}
-            </>
+            <Container>
+                <Slider />
+                < FlashSale />
+            </Container>
         );
     }
 }
