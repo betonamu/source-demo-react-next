@@ -1,30 +1,9 @@
-import { createStore } from "redux";
-import { actionType } from "../actions";
+import { combineReducers } from "redux";
 
-const initState = {
-  count: 0
-};
+import counter from "./count";
 
-const counter = (state = initState, action) => {
-  switch (action.type) {
-    case actionType.INCREASE:
-      return {
-        ...state,
-        count: state.count + 1
-      };
-    case actionType.DECREASE:
-      return {
-        ...state,
-        count: state.count - 1
-      };
-    case actionType.RESET:
-      return {
-        ...state,
-        count: 0
-      };
-    default:
-      return state;
-  }
-};
+const rootReducer = combineReducers({
+    counter
+});
 
-export default counter;
+export default rootReducer;
