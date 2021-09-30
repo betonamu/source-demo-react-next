@@ -6,7 +6,6 @@ import { processLoadingAction } from '../helper';
 const { FLASH_SALE, GET_COLLECTION_BY_ID } = homeActionTypes;
 
 const getFlashSale = (payload) => {
-    console.log('call api');
     return processLoadingAction(apiConfig.home.getFlashSale, payload);
 }
 

@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 
 import { homeActions } from "../../redux/actions";
 import Container from "../Common/Container";
-import CounterNav from "./Counter";
 import FlashSale from "./FlashSale";
 import Slider from "./Slider";
 
@@ -22,7 +21,6 @@ const Home = () => {
         <Container>
             <Slider />
             < FlashSale />
-            <CounterNav />
         </Container>
     );
 }
