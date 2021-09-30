@@ -1,9 +1,36 @@
 import React from 'react';
+
+import { Button } from 'antd';
+import { Typography } from 'antd';
+
+import { useState } from "react";
+
 import styles from './scss/Footer.module.scss';
 
-const Footer = () => {
+const { Title } = Typography;
+Footer.propTypes={}
+
+function Footer (props) {
+    
+    const [count, setCount] = useState(0);
+
+    const Tang = () =>{
+        setCount(x => x + 1);
+    }
+    const Giam = () =>{
+        setCount(x => x - 1);
+    }
+    const Refresh = () =>{
+        setCount(x => x = 0);
+    }
     return (
         <div>
+            <div className={styles.textCenter}>
+                <Title level={3}>{count}</Title><br/>
+                <Button className={styles.mrRight} type="danger" onClick={() => Refresh()}>Làm mới</Button>
+                <Button className={styles.mrRight} type="primary" onClick={() => Giam()}>Giảm</Button>
+                <Button type="primary" onClick={() => Tang()}>Tăng</Button>
+            </div>
             <div className={styles.divBlue}></div>
             <footer className={styles.bg}>
                 <div className={styles.footerMain}>
