@@ -17,7 +17,6 @@ const Desktop = ({ children }) => {
 
 const Mobile = ({ children }) => {
     const { isDesktop, isMobile } = useDevices();
-    console.log(isMobile);
     const [content, setContent] = useState();
     useEffect(() => {
         if (!isDesktop) {

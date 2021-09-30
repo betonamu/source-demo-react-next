@@ -1,0 +1,3 @@
+NEXT_PUBLIC_PMC_API_GATEWAY_URL=https://api-gateway.dev.pharmacity.io/
+NEXT_PUBLIC_GOOGLE_MAP_API=AIzaSyARGkCQ4eW06QTQbb2nzr1sIWyFBLCustY
+NEXT_PUBLIC_APP_MODE=development
