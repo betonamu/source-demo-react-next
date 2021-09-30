@@ -1,23 +1,32 @@
-import { Provider } from "react-redux";
+import { END } from 'redux-saga';
 
-import withLocale from '../hocs/withLocale';
+import { wrapper } from '../redux/store';
 import Layout from "../components/Layout";
 import CounterProvider from "../contexts/Counter/CounterProvider";
-import store from "../redux/store";
 
 import 'antd/dist/antd.css';
 import '../asstes/scss/index.scss';
 
 const MyApp = ({ Component, pageProps }) => {
     return (
-        <Provider store={store}>
-            <CounterProvider>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-            </CounterProvider>
-        </Provider>
+        <CounterProvider>
+            <Layout>
+                <Component {...pageProps} />
+            </Layout>
+        </CounterProvider>
     );
 }
 
-export default withLocale(MyApp);
+MyApp.getInitialProps = wrapper.getInitialAppProps(store => async ({ Component, ctx }) => {
+    if (Component.getInitialProps) {
+        await Component.getInitialProps(ctx);
+    }
+    
+    // 2. Stop the saga if on server
+    if (ctx.req) {
+        await store.dispatch(END);
+        await store.sagaTask.toPromise();
+    }
+});
+
+export default wrapper.withRedux(MyApp);

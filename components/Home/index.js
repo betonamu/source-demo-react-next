@@ -1,31 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
+import { homeActions } from "../../redux/actions";
 import Container from "../Common/Container";
 import CounterNav from "./Counter";
 import FlashSale from "./FlashSale";
 import Slider from "./Slider";
 
-class Home extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: 0
-        }
-        //this.setNewNumber = this.setNewNumber.bind(this)
-    };
+const Home = () => {
+    const dispatch = useDispatch();
 
-    setNewNumber(that) {
-        that.setState({ data: that.state.data + 1 });
-    }
+    const home = useSelector(state=>state.home);
+    console.log('ádasd',home);
 
-    render() {
-        return (
-            <Container>
-                <Slider />
-                < FlashSale />
-                <CounterNav/>
-            </Container>
-        );
-    }
+    useEffect(() => {
+        dispatch(homeActions.getFlashSale());
+    }, []);
+
+    return (
+        <Container>
+            <Slider />
+            < FlashSale />
+            <CounterNav />
+        </Container>
+    );
 }
 
 export default Home;
