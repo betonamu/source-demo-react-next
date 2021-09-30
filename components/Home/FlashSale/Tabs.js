@@ -24,7 +24,7 @@ function Tabs({ styles, date, timer }) {
 
     useEffect(() => {
         autoActive(date.getHours())
-    }, [])
+    }, [date])
 
 
 
