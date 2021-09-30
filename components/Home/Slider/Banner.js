@@ -13,7 +13,7 @@ function Banner() {
             <div className={styles.subBanner}>
                 {
                     dataBanner.map((item, index) => (
-                        <div className={styles.subItem}>
+                        <div className={styles.subItem} key={index}>
                             <img src={item.image} />
                         </div>
                     ))

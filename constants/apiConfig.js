@@ -134,12 +134,12 @@ const apiConfig = {
         }
     },
     category: {
-        getList:{
+        getList: {
             path: `${pmcApiGatewayUrl}api/categories`,
             method: 'GET',
             headers: baseHeader
         },
-        getListByBrand:{
+        getListByBrand: {
             path: `${pmcApiGatewayUrl}api/categories`,
             method: 'GET',
             headers: baseHeader
@@ -159,12 +159,12 @@ const apiConfig = {
             method: 'GET',
             headers: baseHeader
         },
-        registerPromotion:{
+        registerPromotion: {
             path: `${pmcApiGatewayUrl}api/customer/promo-email`,
             method: 'POST',
             headers: baseHeader
         },
-        getFlashSale:{
+        getFlashSale: {
             path: `${pmcApiGatewayUrl}app/api/config`,
             method: 'GET',
             headers: baseHeader
@@ -225,7 +225,7 @@ const apiConfig = {
             headers: baseHeader
         },
     },
-    store:{
+    store: {
         getListStores: {
             path: `${pmcApiGatewayUrl}/all_open_stores`,
             method: 'GET',
@@ -236,7 +236,7 @@ const apiConfig = {
             method: 'GET',
             headers: baseHeader
         },
-        getTotalCountStore :{
+        getTotalCountStore: {
             path: `${pmcApiGatewayUrl}open_stores`,
             method: 'GET',
             headers: baseHeader
@@ -295,14 +295,14 @@ const apiConfig = {
             headers: baseHeader
         },
     },
-    page:{
+    page: {
         getResultPage: {
             path: `${pmcApiGatewayUrl}api/v1/page`,
             method: 'GET',
             headers: baseHeader
         }
     },
-    order:{
+    order: {
         getByToken: {
             path: `${pmcApiGatewayUrl}api/order`,
             method: 'GET',
@@ -314,13 +314,13 @@ const apiConfig = {
             headers: baseHeader
         }
     },
-    brand:{
-        getListBrand:{
+    brand: {
+        getListBrand: {
             path: `${pmcApiGatewayUrl}api/brands/full-info`,
             method: 'GET',
             headers: baseHeader
         },
-        getBrandDetail:{
+        getBrandDetail: {
             path: `${pmcApiGatewayUrl}api/brand-details-by-code`,
             method: 'GET',
             headers: baseHeader
@@ -328,19 +328,19 @@ const apiConfig = {
 
     },
     voucher: {
-        list:{
+        list: {
             path: `${pmcApiGatewayUrl}api/vouchers`,
             method: 'GET',
             headers: baseHeader
         },
-        search:{
+        search: {
             path: `${pmcApiGatewayUrl}api/voucher-by-code`,
             method: 'GET',
             headers: baseHeader
         }
     },
     payment: {
-        methodList:{
+        methodList: {
             path: `${pmcApiGatewayUrl}payment/method`,
             method: 'GET',
             headers: baseHeader

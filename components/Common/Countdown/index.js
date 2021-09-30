@@ -14,17 +14,14 @@ function index({ timer }) {
     const month = dt.getMonth()
     const hour = dt.getHours()
 
-    const timeOut = () => {
-        if (timer[0].start <= hour && hour <= timer[0].end) {
-            setTimeOff(parseInt(timer[0].end))
+
+    const timeOut = (currentTime) => {
+        for (let index = 0; index < timer[0]?.length; index++) {
+            if (timer[0][index].start <= currentTime && currentTime < timer[0][index].end) {
+                setTimeOff(timer[0][index].end)
+                index++
+            }
         }
-        else if (timer[1].start <= hour && hour <= timer[1].end) {
-            setTimeOff(parseInt(timer[1].end))
-        }
-        else if (timer[2].start <= hour && hour <= timer[2].end) {
-            setTimeOff(parseInt(timer[2].end))
-        }
-        return timeOff
     }
 
     const startTimer = () => {
@@ -66,7 +63,7 @@ function index({ timer }) {
 
     useEffect(() => {
         startTimer();
-        timeOut();
+        timeOut(hour);
     });
 
     return (
