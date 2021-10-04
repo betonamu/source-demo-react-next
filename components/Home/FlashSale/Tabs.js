@@ -4,27 +4,27 @@ import classNames from 'classnames';
 import styles from './scss/Index.module.scss'
 
 
-function Tabs({ timer, setTabs, tabs, date, setIdCollection, showProducts }) {
+function Tabs({ timer, setTabs, setTitle, setTime, tabs, date, setIdCollection, showProducts }) {
 
     const hours = date.getHours()
 
+
     const autoActive = (item) => {
         const { start, end, id, collectionId } = item
-        if (start < hours && hours >= end) {
-            return false
-        }
-        else if (start < hours && hours < end) {
+        if (start <= hours && hours < end) {
             setTabs(id)
-            setIdCollection(collectionId)
+            // setIdCollection(collectionId)
+            // setTitle('Kết thúc trong')
             return true
         }
-
+        else if (start < hours && hours >= end) {
+            return false
+        }
     }
 
     const handleTime = (item) => {
         showProducts(item)
     }
-
 
 
     return (

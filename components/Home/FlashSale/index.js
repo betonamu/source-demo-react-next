@@ -52,8 +52,8 @@ function FlashSale({ home }) {
 
     // click show data
     const showProducts = (item) => {
-        const { start, id, collectionId } = item
-        if (hour > item.start) {
+        const { start, end, id, collectionId } = item
+        if (hour > start && hour > end) {
             setTitle('Đã kết thúc')
             setTabs(id)
             setIdCollection(collectionId)
@@ -65,6 +65,12 @@ function FlashSale({ home }) {
             setTabs(id)
             setIdCollection(collectionId)
             setTime(start)
+        }
+        else if (start <= hour && hour < end) {
+            setTime(end)
+            setTabs(id)
+            setIdCollection(collectionId)
+            setTitle('Kết thúc trong')
         }
     }
 
@@ -81,7 +87,7 @@ function FlashSale({ home }) {
             <div className={styles.saleTitle}>
                 {getDateSale()}  <Fire />
             </div>
-            <Tabs timer={timer} tabs={tabs} setTabs={setTabs} setIdCollection={setIdCollection} date={date} showProducts={showProducts} setIdCollection={setIdCollection} />
+            <Tabs timer={timer} tabs={tabs} setTabs={setTabs} setTime={setTime} setTitle={setTitle} setIdCollection={setIdCollection} date={date} showProducts={showProducts} setIdCollection={setIdCollection} />
             <Countdown title={title} time={time} />
             <Item collectionById={idCollection} />
         </div >
