@@ -1,19 +1,28 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import styles from './scss/Index.module.scss'
 
 
-function Tabs({ styles, tabs, date, timer, showProducts, showTimer }) {
+function Tabs({ timer, setTabs, tabs, date, setIdCollection, showProducts }) {
 
     const hours = date.getHours()
 
-    const timeSale = (item, now) => {
-        return item.start <= now && now < item.end
+    const autoActive = (item) => {
+        const { start, end, id, collectionId } = item
+        if (start < hours && hours >= end) {
+            return false
+        }
+        else if (start < hours && hours < end) {
+            setTabs(id)
+            setIdCollection(collectionId)
+            return true
+        }
+
     }
 
     const handleTime = (item) => {
         showProducts(item)
-        showTimer(item)
     }
 
 
@@ -32,7 +41,7 @@ function Tabs({ styles, tabs, date, timer, showProducts, showTimer }) {
                                 onClick={() => handleTime(item)}
                             >
                                 {item.startTime} - {item.endTime}
-                                <span className={styles.span}>{timeSale(item, hours) ? 'Đang diễn ra' : 'Sắp diễn ra'}</span>
+                                <span className={styles.span}>{autoActive(item) ? 'Đang diễn ra' : 'Sắp diễn ra'}</span>
                             </button>
                         ))
                     ))

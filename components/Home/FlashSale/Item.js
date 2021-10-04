@@ -1,17 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from 'nuka-carousel';
 import classNames from 'classnames';
 
-import { homeActions } from "../../../redux/actions"
 import { Desktop, Mobile } from '../../Common/Container/Media'
 
 import styles from './scss/Item.module.scss'
 
-function Item({ collectionById }) {
-    // console.log(collectionById);
+function Item() {
 
-    const dispatch = useDispatch()
     const items = useSelector(state => state.home.flashSaleProduct?.products?.edges)
 
     const slidesToShow = 5

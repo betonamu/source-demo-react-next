@@ -7,18 +7,15 @@ import Countdown from '../../Common/Countdown'
 
 import { Fire } from "../../../asstes/icons"
 import styles from './scss/Index.module.scss';
-import StartTime from '../../Common/Countdown/StartTime';
 import { homeActions } from '../../../redux/actions';
 import { useDispatch } from 'react-redux';
 
 
 function FlashSale({ home }) {
 
-    const [toggle, setToggle] = useState(true)
     const [tabs, setTabs] = useState(0)
-    const [timeToStart, setTimeToStart] = useState()
-    const [timeEnd, setTimeEnd] = useState()
-    const [title, setTitle] = useState('')
+    const [time, setTime] = useState(0)
+    const [title, setTitle] = useState('Bắt đầu trong')
 
     const [idCollection, setIdCollection] = useState('Q29sbGVjdGlvbjoyOA==')
 
@@ -55,31 +52,23 @@ function FlashSale({ home }) {
 
     // click show data
     const showProducts = (item) => {
-        if (item.id === tabs) {
-            setTabs(item.id)
-            setIdCollection(item.collectionId)
-            setTitle('Kết thúc trong')
-            setTimeEnd(item.end)
+        const { start, id, collectionId } = item
+        if (hour > item.start) {
+            setTitle('Đã kết thúc')
+            setTabs(id)
+            setIdCollection(collectionId)
+            setTime(0)
+
         }
-        else if (item.id !== tabs) {
-            setTabs(item.id)
-            setIdCollection(item.collectionId)
-            setTimeToStart(item.start)
-            setTimeEnd(item.end)
-            setToggle(false)
+        else if (hour < start) {
             setTitle('Bắt đầu trong')
+            setTabs(id)
+            setIdCollection(collectionId)
+            setTime(start)
         }
     }
 
-    const showTimer = (item) => {
-        if (hour >= item.start) {
-            setToggle(true)
-        }
-        else {
-            setToggle(false)
-            setTimeToStart(item.start)
-        }
-    }
+
 
 
     useEffect(() => {
@@ -92,13 +81,8 @@ function FlashSale({ home }) {
             <div className={styles.saleTitle}>
                 {getDateSale()}  <Fire />
             </div>
-            <Tabs styles={styles} tabs={tabs} date={date} timer={timer} showProducts={showProducts} showTimer={showTimer} />
-
-            {
-                toggle ?
-                    <Countdown timer={timer} setTimeToStart={setTimeToStart} setToggle={setToggle} title={title} setTitle={setTitle} timeEnd={timeEnd} date={date} setTabs={setTabs} setIdCollection={setIdCollection} timeToStart={timeToStart} /> :
-                    <StartTime timeToStart={timeToStart} />
-            }
+            <Tabs timer={timer} tabs={tabs} setTabs={setTabs} setIdCollection={setIdCollection} date={date} showProducts={showProducts} setIdCollection={setIdCollection} />
+            <Countdown title={title} time={time} />
             <Item collectionById={idCollection} />
         </div >
     );
