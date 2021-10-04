@@ -9,6 +9,7 @@ import { Desktop, Mobile } from '../../Common/Container/Media'
 import styles from './scss/Item.module.scss'
 
 function Item({ collectionById }) {
+    // console.log(collectionById);
 
     const dispatch = useDispatch()
     const items = useSelector(state => state.home.flashSaleProduct?.products?.edges)
@@ -26,10 +27,6 @@ function Item({ collectionById }) {
     const NumberFormat = (number) => {
         return new Intl.NumberFormat('vn-VN', { maximumSignificantDigits: 3 }).format(number)
     }
-
-    useEffect(() => {
-        dispatch(homeActions.getCollectionById({ id: collectionById }))
-    }, [collectionById])
 
     return (
         <div className={styles.wrapperSlider}>

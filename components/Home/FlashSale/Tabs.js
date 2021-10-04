@@ -1,29 +1,22 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 
 
-function Tabs({ styles, tabs, setTabs, date, timer, showProducts, handleGetId }) {
+function Tabs({ styles, tabs, date, timer, showProducts, showTimer }) {
 
-
-    const autoActive = (currentTime) => {
-        for (let index = 1; index < timer[0]?.length; index++) {
-            if (timer[0][index].start <= currentTime && currentTime < timer[0][index].end) {
-                handleGetId(timer[0][index].collectionId)
-                index++
-                setTabs(index)
-            }
-        }
-    }
+    const hours = date.getHours()
 
     const timeSale = (item, now) => {
-        return item.start < now && now < item.end
+        return item.start <= now && now < item.end
+    }
+
+    const handleTime = (item) => {
+        showProducts(item)
+        showTimer(item)
     }
 
 
-    useEffect(() => {
-        autoActive(date.getHours())
-    }, [date])
 
     return (
         <div className={styles.saleBlockTabs}>
@@ -34,12 +27,12 @@ function Tabs({ styles, tabs, setTabs, date, timer, showProducts, handleGetId })
                             <button
                                 key={index}
                                 className={classNames(styles.tabs, {
-                                    [styles.activeTabs]: tabs === item.id
+                                    [styles.activeTabs]: tabs === index
                                 })}
-                                onClick={() => showProducts(item)}
+                                onClick={() => handleTime(item)}
                             >
                                 {item.startTime} - {item.endTime}
-                                <span className={styles.span}>{timeSale(item, date.getHours()) ? 'Đang diễn ra' : 'Sắp diễn ra'}</span>
+                                <span className={styles.span}>{timeSale(item, hours) ? 'Đang diễn ra' : 'Sắp diễn ra'}</span>
                             </button>
                         ))
                     ))

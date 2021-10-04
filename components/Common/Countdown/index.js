@@ -1,74 +1,75 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './Countdown.module.scss'
 
-function index({ timer }) {
+function index({ timer, setTabs, setIdCollection, title, setTitle, setToggle, setTimeToStart }) {
 
     const [timerHours, setTimerHours] = useState()
     const [timerMinutes, setTimerMinutes] = useState()
     const [timerSeconds, setTimerSeconds] = useState()
 
-    const [timeOff, setTimeOff] = useState(0)
 
     const dt = new Date()
     const today = dt.getDate()
     const month = dt.getMonth()
-    const hour = dt.getHours()
 
+    let interval = useRef(null)
 
-    const timeOut = (currentTime) => {
+    const currentTime = dt.getHours()
+    useEffect(() => {
+
         for (let index = 0; index < timer[0]?.length; index++) {
             if (timer[0][index].start <= currentTime && currentTime < timer[0][index].end) {
-                setTimeOff(timer[0][index].end)
-                index++
+
+                setTitle('Kết thúc trong')
+                setTabs(index)
+                setIdCollection(timer[0][index].collectionId)
+
+                interval = setInterval(() => {
+                    const endTime = new Date(`${month + 1}-${today}-2021 ${timer[0][index].end}:00:00`).getTime()
+                    const now = new Date().getTime();
+
+                    const distance = endTime - now;
+
+                    let seconds = 1000
+                    let minutes = seconds * 60
+                    let hours = minutes * 60
+                    let days = hours * 24
+
+
+                    let timeHours = Math.floor((distance % days) / (hours));
+                    let timeMinutes = Math.floor((distance % hours) / minutes);
+                    let timeSeconds = Math.floor((distance % minutes) / seconds);
+
+                    timeHours = timeHours < 10 ? "0" + timeHours : timeHours
+                    timeMinutes = timeMinutes < 10 ? "0" + timeMinutes : timeMinutes
+                    timeSeconds = timeSeconds < 10 ? "0" + timeSeconds : timeSeconds
+
+
+                    if (distance < 0) {
+                        setToggle(false)
+                        setTabs(index + 1)
+                        setTimeToStart(timer[0][index + 1].start)
+                        clearInterval(interval.current)
+                    }
+                    else {
+                        setTimerHours(timeHours);
+                        setTimerMinutes(timeMinutes);
+                        setTimerSeconds(timeSeconds);
+                    }
+                }, 1000);
+            }
+            else if (index > timer[0]?.length) {
+                index = 0
             }
         }
-    }
-
-    const startTimer = () => {
-
-        const countDownDate = new Date(`${month + 1}-${today}-2021 ${timeOff}:00:00`).getTime(),
-
-            interval = setInterval(() => {
-                const now = new Date().getTime();
-
-                const distance = countDownDate - now;
-
-                let hours = Math.floor(
-                    (distance % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)
-                );
-                let minutes = Math.floor((distance % (60 * 60 * 1000)) / (1000 * 60));
-                let seconds = Math.floor((distance % (60 * 1000)) / 1000);
-
-                if (hours <= 9) {
-                    hours = "0" + hours;
-                }
-                if (minutes <= 9) {
-                    minutes = "0" + minutes
-                }
-                if (seconds <= 9) {
-                    seconds = "0" + seconds
-                }
 
 
-                if (distance < 0) {
-                    clearInterval(interval.current);
 
-                } else {
-                    setTimerHours(hours);
-                    setTimerMinutes(minutes);
-                    setTimerSeconds(seconds);
-                }
-            });
-    };
-
-    useEffect(() => {
-        startTimer();
-        timeOut(hour);
-    });
+        return () => clearInterval(interval.current)
+    }, [timer]);
 
     return (
         <div className={styles.countdownWrapper}>
-
             <div className={styles.countdown}>
                 <h6>Kết thúc trong: </h6>
                 <div>{timerHours}</div>
