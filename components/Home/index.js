@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
-import { homeActions } from "../../redux/actions";
+import { homeActions, mainActions } from "../../redux/actions";
 import Container from "../Common/Container";
 import FlashSale from "./FlashSale";
 import Slider from "./Slider";
@@ -15,6 +15,13 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(homeActions.getFlashSale());
+    }, []);
+
+    const main = useSelector(state=>state.main);
+    console.log('getData',main);
+
+    useEffect(() => {
+        dispatch(mainActions.getData());
     }, []);
 
     return (
