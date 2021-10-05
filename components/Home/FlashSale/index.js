@@ -21,15 +21,14 @@ function FlashSale({ home }) {
 
     const dispatch = useDispatch()
 
-    const dt = new Date()
-    const hour = dt.getHours()
+    const date = new Date()
+    const hour = date.getHours()
 
 
     const mapTime = home.flashSale.map(item => (
         item?.flashsale?.["time-frame"]
     ))
 
-    const date = new Date()
 
     const getDateSale = () => {
         return home.flashSale.map(item => (
@@ -56,20 +55,20 @@ function FlashSale({ home }) {
         if (hour > start && hour > end) {
             setTitle('Đã kết thúc')
             setTabs(id)
-            setIdCollection(collectionId)
+            dispatch(homeActions.getCollectionById({ id: collectionId }))
             setTime(0)
 
         }
         else if (hour < start) {
             setTitle('Bắt đầu trong')
             setTabs(id)
-            setIdCollection(collectionId)
             setTime(start)
+            dispatch(homeActions.getCollectionById({ id: collectionId }))
         }
         else if (start <= hour && hour < end) {
             setTime(end)
             setTabs(id)
-            setIdCollection(collectionId)
+            dispatch(homeActions.getCollectionById({ id: collectionId }))
             setTitle('Kết thúc trong')
         }
     }
@@ -78,8 +77,21 @@ function FlashSale({ home }) {
 
 
     useEffect(() => {
+        const countToStart = () => {
+            for (let index = 0; index < timer[0]?.length; index++) {
+                if (hour <= timer[0][0].start) {
+                    setTabs(0)
+                    setTime(timer[0][0].start)
+                }
+                else if (timer[0][index].end <= hour && hour < timer[0][index + 1].start) {
+                    setTabs(index + 1)
+                    setTime(timer[0][index + 1].start)
+                }
+            }
+        }
+        countToStart()
         dispatch(homeActions.getCollectionById({ id: idCollection }))
-    })
+    },[])
 
 
     return (
