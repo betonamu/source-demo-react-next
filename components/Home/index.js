@@ -17,14 +17,12 @@ const Home = () => {
         dispatch(homeActions.getFlashSale());
     }, []);
 
-    const main = useSelector(state=>state.main);
-    console.log('getData',main);
 
-    useEffect(() => {
-        dispatch(mainActions.getData());
-    }, []);
+
+
 
     return (
+        
         <Container>
             <Slider />
             < FlashSale />

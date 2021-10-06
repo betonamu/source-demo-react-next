@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Carousel from 'nuka-carousel';
 
 import { NextBtn, PrevBtn } from '../../../asstes/icons';
@@ -9,6 +9,11 @@ import { dataMobile, dataSlider } from './data';
 
 import styles from './scss/Slider.module.scss';
 
+
+import { useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
+import { mainActions } from '../../../redux/actions';
 
 function Slider() {
 
@@ -48,6 +53,15 @@ function Slider() {
         }
     }
 
+    const dispatch = useDispatch();
+
+    const main = useSelector(state=>state.main.getData);
+    console.log('ádasd',main);
+    
+    useEffect(() => {
+        dispatch(mainActions.getData());
+    }, []);
+
     return (
         <div className={styles.bannerMain}>
             <div className={styles.containerSlider}>
@@ -55,8 +69,10 @@ function Slider() {
                 <Desktop>
                     <Carousel defaultControlsConfig={configCarouselBtn} autoplay={true} wrapAround={true}>
                         {
-                            dataSlider.map((item) => (
-                                <img key={item.id} className={styles.imageSlider} src={item.image} alt="image" />
+                            main.images?.map(a=>(
+                                a.images?.map(b=>(
+                                    <img key={a.id} className={styles.imageSlider} src={b.img} alt="image" />    
+                                ))
                             ))
                         }
                     </Carousel>
