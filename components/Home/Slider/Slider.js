@@ -81,8 +81,10 @@ function Slider() {
                 <Mobile>
                     <Carousel defaultControlsConfig={configCarouselBtn} renderCenterRightControls renderCenterLeftControls autoplay={true} wrapAround={true}>
                         {
-                            dataMobile.map((item) => (
-                                <img key={item.id} className={styles.imageSlider} src={item.image} alt="image" />
+                            main.images_mobile?.map(a=>(
+                                a.images?.map(b=>(
+                                    <img key={a.id} className={styles.imageSlider} src={b.img} alt="image" />    
+                                ))
                             ))
                         }
                     </Carousel>
