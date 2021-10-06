@@ -26,7 +26,7 @@ const home = handleActions(
                 ...state,
                 flashSaleProduct: action.payload.data
             };
-        },
+        }
     },
     initialState
 );
