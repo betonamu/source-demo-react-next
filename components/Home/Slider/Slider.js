@@ -69,9 +69,9 @@ function Slider() {
                 <Desktop>
                     <Carousel defaultControlsConfig={configCarouselBtn} autoplay={true} wrapAround={true}>
                         {
-                            main.images?.map(a=>(
-                                a.images?.map(b=>(
-                                    <img key={a.id} className={styles.imageSlider} src={b.img} alt="image" />    
+                            main[0]?.images?.map(item=>(
+                                item.images?.map(items=>(
+                                    <img key={item.id} className={styles.imageSlider} src={items.img} alt="image" />    
                                 ))
                             ))
                         }
@@ -81,9 +81,9 @@ function Slider() {
                 <Mobile>
                     <Carousel defaultControlsConfig={configCarouselBtn} renderCenterRightControls renderCenterLeftControls autoplay={true} wrapAround={true}>
                         {
-                            main.images_mobile?.map(a=>(
-                                a.images?.map(b=>(
-                                    <img key={a.id} className={styles.imageSlider} src={b.img} alt="image" />    
+                            main[0]?.images_mobile?.map(item=>(
+                                item.images?.map(items=>(
+                                    <img key={item.id} className={styles.imageSlider} src={items.img} alt="image" />    
                                 ))
                             ))
                         }

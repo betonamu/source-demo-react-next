@@ -18,9 +18,6 @@ const Home = () => {
     }, []);
 
 
-
-
-
     return (
         
         <Container>
