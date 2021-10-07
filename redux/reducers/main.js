@@ -15,7 +15,7 @@ const main = handleActions(
             return {...state, ...action.payload.main}
         },
         [createSuccessActionType(GET_DATA)]: (state, action)=>{
-            return{...state, getData:action.payload.data
+            return{...state, getData:action.payload.galleries.data
             };
         },
     },
