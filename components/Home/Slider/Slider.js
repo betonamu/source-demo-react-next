@@ -1,19 +1,12 @@
 import React, { useEffect } from 'react';
 import Carousel from 'nuka-carousel';
+import { useSelector, useDispatch } from "react-redux";
 
 import { NextBtn, PrevBtn } from '../../../asstes/icons';
-
 import { Desktop, Mobile } from '../../Common/Container/Media';
-
-import { dataMobile, dataSlider } from './data';
+import { mainActions } from '../../../redux/actions';
 
 import styles from './scss/Slider.module.scss';
-
-
-import { useSelector } from "react-redux";
-
-import { useDispatch } from "react-redux";
-import { mainActions } from '../../../redux/actions';
 
 function Slider() {
 
@@ -69,7 +62,7 @@ function Slider() {
                 <Desktop>
                     <Carousel defaultControlsConfig={configCarouselBtn} autoplay={true} wrapAround={true}>
                         {
-                            main[0]?.images?.map(item=>(
+                            main?.length > 0 && main[0]?.images?.map(item=>(
                                 item.images?.map(items=>(
                                     <img key={item.id} className={styles.imageSlider} src={items.img} alt="image" />    
                                 ))
@@ -81,7 +74,7 @@ function Slider() {
                 <Mobile>
                     <Carousel defaultControlsConfig={configCarouselBtn} renderCenterRightControls renderCenterLeftControls autoplay={true} wrapAround={true}>
                         {
-                            main[0]?.images_mobile?.map(item=>(
+                            main?.length > 0 && main[0]?.images_mobile?.map(item=>(
                                 item.images?.map(items=>(
                                     <img key={item.id} className={styles.imageSlider} src={items.img} alt="image" />    
                                 ))
