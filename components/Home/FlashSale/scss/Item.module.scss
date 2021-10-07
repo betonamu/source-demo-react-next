@@ -1,13 +1,11 @@
 .item-sale {
     background: white;
     border-radius: 12px;
-
     margin: 10px 5px;
-    padding: 10px 5px;
+    padding: 20px 5px;
 
     .img-sale {
         position: relative;
-        height: 235px;
 
         img {
             border-radius: 12px;
@@ -17,15 +15,16 @@
 
         .tem-sale {
             position: absolute;
-            left: 0;
-            bottom: 0;
+            left: 0px;
+            bottom: -15px;
             width: 70px;
         }
     }
 
     .name-sale {
         font-size: 14px;
-        padding: 10px 10px;
+        padding: 20px 10px;
+        height: 110px;
 
         p {
             color: rgba(17, 41, 80, 1);
@@ -35,7 +34,7 @@
 
     .price-sale {
         font-size: 16px;
-        padding: 0px 10px;
+        padding: 0px 20px;
 
         del {
             color: rgba(178, 186, 198, 1);
@@ -66,6 +65,10 @@
 
 .slider{
     padding-bottom: 50px;
+}
+
+.slider-slide{
+    height: 530px !important;
 }
 
 

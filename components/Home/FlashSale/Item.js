@@ -1,12 +1,15 @@
 import React from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import Carousel from 'nuka-carousel';
+import classNames from 'classnames';
 
 import { Desktop, Mobile } from '../../Common/Container/Media'
 
-import { data } from './data'
-
 import styles from './scss/Item.module.scss'
+
 function Item() {
+
+    const items = useSelector(state => state.home.flashSaleProduct?.products?.edges)
 
     const slidesToShow = 5
     const slidesToShowMobile = 2
@@ -18,6 +21,10 @@ function Item() {
         },
     }
 
+    const NumberFormat = (number) => {
+        return new Intl.NumberFormat('vn-VN', { maximumSignificantDigits: 3 }).format(number)
+    }
+
     return (
         <div className={styles.wrapperSlider}>
             <Desktop>
@@ -27,23 +34,22 @@ function Item() {
                     renderCenterLeftControls={false}
                     renderCenterRightControls={false}
                     defaultControlsConfig={configCarouselBtn}
-                    className={styles.slider}
+                    className={classNames(styles.slider, styles.sliderSlide)}
                 >
                     {
-                        data.map(item => (
-                            <div className={styles.itemSale} key={item.id}>
+                        items?.map(item => (
+                            <div className={styles.itemSale} key={item.node.category.id}>
                                 <div className={styles.imgSale}>
-                                    <img src={item.image} />
+                                    <img src={item.node?.thumbnail?.url} />
                                     <div className={styles.temSale}>
                                         <img src="./images/image 236.png" />
                                     </div>
                                 </div>
                                 <div className={styles.nameSale}>
-                                    <p>{item.title}</p>
+                                    <p>{item.node?.name}</p>
                                 </div>
                                 <div className={styles.priceSale}>
-                                    <del>{item.priceDel}</del>
-                                    <p>{item.price}</p>
+                                    <p>{NumberFormat(item.node?.pricing?.priceRange?.start?.gross?.amount)} {item.node?.pricing?.priceRange?.start?.gross?.currency}</p>
                                 </div>
                                 <div className={styles.btnBuy}>
                                     <button type="button">Thêm vào giỏ hàng</button>
@@ -63,20 +69,19 @@ function Item() {
                     className={styles.slider}
                 >
                     {
-                        data.map(item => (
-                            <div className={styles.itemSale} key={item.id}>
+                        items?.map(item => (
+                            <div className={styles.itemSale} key={item.node.category.id}>
                                 <div className={styles.imgSale}>
-                                    <img src={item.image} />
+                                    <img src={item.node?.thumbnail?.url} />
                                     <div className={styles.temSale}>
                                         <img src="./images/image 236.png" />
                                     </div>
                                 </div>
                                 <div className={styles.nameSale}>
-                                    <p>{item.title}</p>
+                                    <p>{item.node?.name}</p>
                                 </div>
                                 <div className={styles.priceSale}>
-                                    <del>{item.priceDel}</del>
-                                    <p>{item.price}</p>
+                                    <p>{item.node?.pricing?.priceRange?.start?.gross?.amount} {item.node?.pricing?.priceRange?.start?.gross?.currency}</p>
                                 </div>
                                 <div className={styles.btnBuy}>
                                     <button type="button">Thêm vào giỏ hàng</button>

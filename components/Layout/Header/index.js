@@ -26,7 +26,6 @@ const SearchForm = () => {
 };
 
 const Header = () => {
-  console.log(styles);
   return (
     <>
       <Desktop>

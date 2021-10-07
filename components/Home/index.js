@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
@@ -10,8 +10,7 @@ import Slider from "./Slider";
 const Home = () => {
     const dispatch = useDispatch();
 
-    const home = useSelector(state=>state.home);
-    console.log('ádasd',home);
+    const home = useSelector(state => state.home);
 
     useEffect(() => {
         dispatch(homeActions.getFlashSale());
@@ -27,7 +26,7 @@ const Home = () => {
     return (
         <Container>
             <Slider />
-            < FlashSale />
+            <FlashSale home={home} />
         </Container>
     );
 }

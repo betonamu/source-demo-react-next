@@ -1,31 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-function Tabs({ styles, date, timer }) {
+import styles from './scss/Index.module.scss'
 
-    const [tabs, setTabs] = useState(0)
 
-    const autoActive = (currentTime) => {
-        if (timer[0].start <= currentTime && currentTime < timer[0].end) {
-            setTabs(1)
+function Tabs({ timer, setTabs, setTitle, setTime, tabs, date, setIdCollection, showProducts }) {
+
+    const hours = date.getHours()
+
+
+    const autoActive = (item) => {
+        const { start, end, id, collectionId } = item
+        if (start <= hours && hours < end) {
+            setTabs(id)
+            // setIdCollection(collectionId)
+            // setTitle('Kết thúc trong')
+            return true
         }
-        else if (timer[1].start <= currentTime && currentTime < timer[1].end) {
-            setTabs(2)
+        else if (start < hours && hours >= end) {
+            return false
         }
-        else if (timer[2].start <= currentTime && currentTime < timer[2].end) {
-            setTabs(3)
-        }
-        else setTabs(0)
     }
 
-    const timeSale = (item, now) => {
-        return item.start < now && now < item.end
+    const handleTime = (item) => {
+        showProducts(item)
     }
-
-    useEffect(() => {
-        autoActive(date.getHours())
-    }, [date])
-
 
 
     return (
@@ -33,14 +32,18 @@ function Tabs({ styles, date, timer }) {
             <div className={styles.saleTabs}>
                 {
                     timer.map((item) => (
-                        <button
-                            className={classNames(styles.tabs, {
-                                [styles.activeTabs]: tabs === item.id
-                            })}
-                        >
-                            {item.start} - {item.end}
-                            <span className={styles.span}>{timeSale(item, date.getHours()) ? 'Đang diễn ra' : 'Sắp diễn ra'}</span>
-                        </button>
+                        item.map((item, index) => (
+                            <button
+                                key={index}
+                                className={classNames(styles.tabs, {
+                                    [styles.activeTabs]: tabs === index
+                                })}
+                                onClick={() => handleTime(item)}
+                            >
+                                {item.startTime} - {item.endTime}
+                                <span className={styles.span}>{autoActive(item) ? 'Đang diễn ra' : 'Sắp diễn ra'}</span>
+                            </button>
+                        ))
                     ))
                 }
             </div>

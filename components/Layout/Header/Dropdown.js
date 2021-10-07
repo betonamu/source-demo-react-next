@@ -25,7 +25,7 @@ function Dropdown() {
             <div className={styles.dropdownBox}>
                 {
                     dataDropdown.search.edges.map((item, index) => (
-                        <Category dataDropdown={dataDropdown} item={item} onClick={() => setCurrentIndex(index)} active={index === currentIndex} handeChangeValue={handeChangeValue} />
+                        <Category key={index} dataDropdown={dataDropdown} item={item} onClick={() => setCurrentIndex(index)} active={index === currentIndex} handeChangeValue={handeChangeValue} />
                     ))
                 }
             </div>

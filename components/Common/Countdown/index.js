@@ -1,82 +1,74 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './Countdown.module.scss'
 
-function index({ timer }) {
+function index({ title, time }) {
 
     const [timerHours, setTimerHours] = useState()
     const [timerMinutes, setTimerMinutes] = useState()
     const [timerSeconds, setTimerSeconds] = useState()
 
-    const [timeOff, setTimeOff] = useState(0)
 
     const dt = new Date()
     const today = dt.getDate()
     const month = dt.getMonth()
-    const hour = dt.getHours()
 
-    const timeOut = () => {
-        if (timer[0].start <= hour && hour <= timer[0].end) {
-            setTimeOff(parseInt(timer[0].end))
-        }
-        else if (timer[1].start <= hour && hour <= timer[1].end) {
-            setTimeOff(parseInt(timer[1].end))
-        }
-        else if (timer[2].start <= hour && hour <= timer[2].end) {
-            setTimeOff(parseInt(timer[2].end))
-        }
-        return timeOff
-    }
+    let interval = useRef(null)
 
-    const startTimer = () => {
 
-        const countDownDate = new Date(`${month + 1}-${today}-2021 ${timeOff}:00:00`).getTime(),
+    useEffect(() => {
 
-            interval = setInterval(() => {
+        interval = setInterval(() => {
+            if (time === 0) {
+                setTimerHours(0);
+                setTimerMinutes(0);
+                setTimerSeconds(0);
+            }
+            else {
+                const endTime = new Date(`${month + 1}-${today}-2021 ${time}:00:00`).getTime()
                 const now = new Date().getTime();
 
-                const distance = countDownDate - now;
 
-                let hours = Math.floor(
-                    (distance % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)
-                );
-                let minutes = Math.floor((distance % (60 * 60 * 1000)) / (1000 * 60));
-                let seconds = Math.floor((distance % (60 * 1000)) / 1000);
+                const distance = endTime - now;
 
-                if (hours <= 9) {
-                    hours = "0" + hours;
-                }
-                if (minutes <= 9) {
-                    minutes = "0" + minutes
-                }
-                if (seconds <= 9) {
-                    seconds = "0" + seconds
-                }
+                let seconds = 1000
+                let minutes = seconds * 60
+                let hours = minutes * 60
+                let days = hours * 24
+
+
+                let timeHours = Math.floor((distance % days) / (hours));
+                let timeMinutes = Math.floor((distance % hours) / minutes);
+                let timeSeconds = Math.floor((distance % minutes) / seconds);
+
+                timeHours = timeHours < 10 ? "0" + timeHours : timeHours
+                timeMinutes = timeMinutes < 10 ? "0" + timeMinutes : timeMinutes
+                timeSeconds = timeSeconds < 10 ? "0" + timeSeconds : timeSeconds
 
 
                 if (distance < 0) {
-                    clearInterval(interval.current);
-
-                } else {
-                    setTimerHours(hours);
-                    setTimerMinutes(minutes);
-                    setTimerSeconds(seconds);
+                    clearInterval(interval)
                 }
-            });
-    };
+                else {
+                    setTimerHours(timeHours);
+                    setTimerMinutes(timeMinutes);
+                    setTimerSeconds(timeSeconds);
+                }
+            }
+        }, 1000);
 
-    useEffect(() => {
-        startTimer();
-        timeOut();
-    });
+        return () => clearInterval(interval)
+    }, [time]);
 
     return (
         <div className={styles.countdownWrapper}>
-
             <div className={styles.countdown}>
-                <h6>Kết thúc trong: </h6>
+                <h6>{title}: </h6>
+
                 <div>{timerHours}</div>
                 <div>{timerMinutes}</div>
                 <div>{timerSeconds}</div>
+
+
             </div>
         </div>
     );
