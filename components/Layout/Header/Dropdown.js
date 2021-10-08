@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { categoryActions } from '../../../redux/actions';
 import Category from './Category';
 import Item from './Item';
 
-import { dataDropdown } from './data';
-
 import styles from './scss/Dropdown.module.scss';
-
-
-
 
 
 function Dropdown() {
@@ -20,18 +18,27 @@ function Dropdown() {
         setFilter(convert)
     }
 
+    const dispatch = useDispatch();
+
+    const category = useSelector(state=>state.category.getList);
+    console.log('Category',category);
+
+    useEffect(() => {
+        dispatch(categoryActions.getList());
+    }, []);
+
     return (
         <>
             <div className={styles.dropdownBox}>
                 {
-                    dataDropdown.search.edges.map((item, index) => (
-                        <Category dataDropdown={dataDropdown} item={item} onClick={() => setCurrentIndex(index)} active={index === currentIndex} handeChangeValue={handeChangeValue} />
+                    category?.length > 0 && category.map((item, index) => (
+                        <Category dataDropdown={category} item={item} onClick={() => setCurrentIndex(index)} active={index === currentIndex} handeChangeValue={handeChangeValue} />
                     ))
                 }
             </div>
             <div className={styles.dropdownBoxCenter}>
                 {
-                    dataDropdown.search.edges.map(item => (
+                    category?.length > 0 && category.map(item => (
                         item.node.slug === filter ?
                             item.node.children.edges.map((item, index) =>
                                 <Item item={item} key={index} />
