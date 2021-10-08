@@ -19,12 +19,10 @@ function Dropdown() {
     }
 
     const dispatch = useDispatch();
-
     const category = useSelector(state=>state.category.getList);
-    console.log('Category',category);
 
     useEffect(() => {
-        dispatch(categoryActions.getList());
+        dispatch(categoryActions.getList({level: 0}));
     }, []);
 
     return (

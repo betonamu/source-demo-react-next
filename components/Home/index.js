@@ -16,14 +16,6 @@ const Home = () => {
         dispatch(homeActions.getFlashSale());
     }, []);
 
-    const category = useSelector(state=>state.category.getList);
-    console.log('Category',category);
-
-    useEffect(() => {
-        dispatch(categoryActions.getList());
-    }, []);
-
-    
     return (
         
         <Container>
