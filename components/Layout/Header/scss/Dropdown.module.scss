@@ -3,6 +3,8 @@
     display: flex;
     flex-wrap: wrap;
     padding: 5px 5px;
+    flex-direction: row;
+    align-content: flex-start;
 
     .item-box {
         cursor: pointer;
@@ -13,7 +15,7 @@
         flex-direction: column;
         width: 20%;
         height: 100px;
-        margin: 0 0 5px;
+        margin: 0 0 30px;
         padding: 0 10px;
 
         .item-name {
