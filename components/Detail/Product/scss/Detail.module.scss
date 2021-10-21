@@ -214,14 +214,15 @@
         display: grid; 
         grid-template-columns: 17% 17% 17% 17% 17%;
         justify-content: start;
-        .bd{
-            border: 1px solid #0F62F9;
-            box-sizing: border-box;
-            border-radius: 12px;
-        }
         img{
             width: 80%;
             margin-top: 10px;
+            border: 1px solid #E5E5E5;
+            box-sizing: border-box;
+            border-radius: 12px;
+        }
+        img:nth-child(1){
+            border: 1px solid #0F62F9;
         }
     }
     h4{
