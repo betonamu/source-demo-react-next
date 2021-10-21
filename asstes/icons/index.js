@@ -13,7 +13,10 @@ import IconDownCategory from "./icon-down-category.svg";
 import IconSearch from "./icon-search.svg";
 import IconCart from "./icon-cart.svg";
 import IconEnglish from "./icon-English.svg";
-import Fire from "./fire.svg"
+import Fire from "./fire.svg";
+import IconStar from "./icon-star.svg";
+import IconCheck from "./icon-check.svg";
+import IconQueMark from "./icon-question-mark.svg";
 
 export {
     NextBtn,
@@ -30,5 +33,8 @@ export {
     IconSearch,
     IconCart,
     IconEnglish,
-    Fire
+    Fire,
+    IconStar,
+    IconCheck,
+    IconQueMark,
 };

@@ -4,3 +4,5 @@ export { actionTypes as loadingActionTypes, actions as loadingActions } from './
 
 
 export {actions as mainActions, actionTypes as mainActionTypes} from "./main";
+
+export {actions as productActions, actionTypes as productActionTypes} from "./product";
