@@ -49,7 +49,7 @@ function Slider() {
     const dispatch = useDispatch();
 
     const main = useSelector(state=>state.main.getData);
-    console.log('ádasd',main);
+    // console.log('ádasd',main);
     
     useEffect(() => {
         dispatch(mainActions.getData());
