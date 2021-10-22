@@ -19,13 +19,6 @@ const Detail = () => {
         dispatch(productActions.getDetail({slug}));
     }, []);
     
-    const number = 40000;
-    
-    console.log(new Intl.NumberFormat('en-VN', { maximumSignificantDigits: 3 }).format(number));
-
-
-
-
     return (
         <div className={styles.text}>
             <div className="container">
