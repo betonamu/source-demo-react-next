@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Breadcrumb } from 'antd';
 import parse from 'html-react-parser';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/dist/client/router';
+
 import { productActions } from '../../../redux/actions';
 
 import { IconStar, IconCheck, IconQueMark, IconDownCategory,IconCart } from "../../../asstes/icons";
+
 import styles from './scss/Detail.module.scss';
 
 const Detail = () => {
@@ -18,18 +19,19 @@ const Detail = () => {
     useEffect(() => {
         dispatch(productActions.getDetail({slug}));
     }, []);
-    
 
     return (
         <div className={styles.text}>
             <div className="container">
                 <div className={styles.textMr}>
-                    <Breadcrumb separator="+">
-                        <Breadcrumb.Item>Trang chủ </Breadcrumb.Item>
-                        <Breadcrumb.Item><a href="">Sản phẩm</a></Breadcrumb.Item>
-                        <Breadcrumb.Item><a href="">Chăm sóc sắc đẹp</a></Breadcrumb.Item>
-                        <Breadcrumb.Item>Nước tẩy trang tươi mát Loreal Mic...</Breadcrumb.Item>
-                    </Breadcrumb>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+                            <li class="breadcrumb-item active" aria-current="page">Chăm sóc sắc đẹp</li>
+                            <li class="breadcrumb-item active" aria-current="page">Nước tẩy trang tươi mát Loreal Mic...</li>
+                        </ol>
+                    </nav>
                 </div>
                 <div className={styles.boxTo}>
                     <div>
@@ -59,9 +61,7 @@ const Detail = () => {
                                     <p>Mua hàng và tích <samp>161 điểm</samp> ExtraCare <IconQueMark/></p>
                                 </div>
                                 <div className={styles.li3}>
-                                    {product.description}
-                                    {/* {parse(product.description)} */}
-
+                                    {parse(String(product.description))}
                                 </div>
                                 {/* <div className={styles.tuyChon}>
                                     <p>Tùy chọn sản phẩm</p>
