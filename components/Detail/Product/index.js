@@ -19,6 +19,13 @@ const Detail = () => {
         dispatch(productActions.getDetail({slug}));
     }, []);
     
+    const number = 40000;
+    
+    console.log(new Intl.NumberFormat('en-VN', { maximumSignificantDigits: 3 }).format(number));
+
+
+
+
     return (
         <div className={styles.text}>
             <div className="container">
@@ -50,7 +57,7 @@ const Detail = () => {
                                 <span className={styles.starFill}><IconStar fill="#FFD211"/>4.8 (456 Đánh giá)</span>
                                 <div className={styles.bg}>
                                     <a className={styles.a1}>
-                                        {product.pricing?.priceRange?.start?.gross?.amount}
+                                        {Intl.NumberFormat('en-VN', { maximumSignificantDigits: 3 }).format(product.pricing?.priceRange?.start?.gross?.amount)}
                                         <samp>{product.pricing?.priceRange?.start?.gross?.currency}</samp>
                                     </a>
                                     {/* <a className={styles.a2}>132.300 đ</a> */}
