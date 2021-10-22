@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Breadcrumb } from 'antd';
 import parse from 'html-react-parser';
-import { productActions } from '../../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/dist/client/router';
+import { productActions } from '../../../redux/actions';
 
 import { IconStar, IconCheck, IconQueMark, IconDownCategory,IconCart } from "../../../asstes/icons";
 import styles from './scss/Detail.module.scss';
