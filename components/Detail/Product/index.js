@@ -36,32 +36,32 @@ const Detail = () => {
                 <div className={styles.boxTo}>
                     <div>
                         <div>
-                            <img src={product.thumbnail?.url}/>
+                            <img src={product?.thumbnail?.url}/>
                         </div>
                         <div className={styles.boxNho5}>
                             {
-                                product.images?.map(item=>(
+                                product?.images?.map(item=>(
                                     <img src={item.url} />
                                 ))
                             }
                         </div>
                     </div>
                     <div>
-                        <h4>{product.name}</h4>
+                        <h4>{product?.name}</h4>
                         <div className={styles.boxNho}>
                             <div>
                                 <span className={styles.starFill}><IconStar fill="#FFD211"/>4.8 (456 Đánh giá)</span>
                                 <div className={styles.bg}>
                                     <a className={styles.a1}>
-                                        {Intl.NumberFormat('en-VN', { maximumSignificantDigits: 3 }).format(product.pricing?.priceRange?.start?.gross?.amount)}
-                                        <samp>{product.pricing?.priceRange?.start?.gross?.currency}</samp>
+                                        {Intl.NumberFormat('en-VN', { maximumSignificantDigits: 3 }).format(product?.pricing?.priceRange?.start?.gross?.amount)}
+                                        <samp>{product?.pricing?.priceRange?.start?.gross?.currency}</samp>
                                     </a>
                                     {/* <a className={styles.a2}>132.300 đ</a> */}
                                     <span>-30%</span>
                                     <p>Mua hàng và tích <samp>161 điểm</samp> ExtraCare <IconQueMark/></p>
                                 </div>
                                 <div className={styles.li3}>
-                                    {parse(String(product.description))}
+                                    {parse(String(product?.description))}
                                 </div>
                                 {/* <div className={styles.tuyChon}>
                                     <p>Tùy chọn sản phẩm</p>
@@ -82,7 +82,7 @@ const Detail = () => {
                                     <a className={styles.xanh}><IconCart /> Thêm vào giỏ hàng</a>
                                 </div>
                                 {
-                                    product.variants?.map(item=>(
+                                    product?.variants?.map(item=>(
                                         <p className={styles.ma}>Mã: {item.sku}</p>
                                     ))
                                 }
@@ -92,11 +92,11 @@ const Detail = () => {
                                 <div className={styles.boxTren}>
                                     <div className={styles.boxLogo}>
                                         <div className={styles.logoLo}>
-                                            <img src={product.brand?.image}/>
+                                            <img src={product?.brand?.image}/>
                                         </div>
-                                        <span>{product.brand?.code}</span>
+                                        <span>{product?.brand?.code}</span>
                                     </div>
-                                    <p>{product.brand?.shortDescription}</p>
+                                    <p>{product?.brand?.shortDescription}</p>
                                     <div className={styles.center}><a>Xem thêm</a></div>
                                 </div>
                                 <div className={styles.boxDuoi}>
