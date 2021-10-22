@@ -19,6 +19,7 @@ const Detail = () => {
         dispatch(productActions.getDetail({slug}));
     }, []);
     
+
     return (
         <div className={styles.text}>
             <div className="container">
@@ -58,8 +59,8 @@ const Detail = () => {
                                     <p>Mua hàng và tích <samp>161 điểm</samp> ExtraCare <IconQueMark/></p>
                                 </div>
                                 <div className={styles.li3}>
-
-                                    {parse(product.description)}
+                                    {product.description}
+                                    {/* {parse(product.description)} */}
 
                                 </div>
                                 {/* <div className={styles.tuyChon}>
