@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Breadcrumb } from 'antd';
+import parse from 'html-react-parser';
 import { productActions } from '../../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/dist/client/router';
@@ -50,16 +51,16 @@ const Detail = () => {
                                 <div className={styles.bg}>
                                     <a className={styles.a1}>
                                         {product.pricing?.priceRange?.start?.gross?.amount}
-                                        <samp>{product.pricing?.priceRange?.start?.gross?.currency}</samp></a>
-                                    {/* <a className={styles.a1}>132.300 đ</a> */}
+                                        <samp>{product.pricing?.priceRange?.start?.gross?.currency}</samp>
+                                    </a>
                                     {/* <a className={styles.a2}>132.300 đ</a> */}
                                     <span>-30%</span>
                                     <p>Mua hàng và tích <samp>161 điểm</samp> ExtraCare <IconQueMark/></p>
                                 </div>
                                 <div className={styles.li3}>
 
-                                    {product.description}
-                                    
+                                    {parse(product.description)}
+
                                 </div>
                                 {/* <div className={styles.tuyChon}>
                                     <p>Tùy chọn sản phẩm</p>
