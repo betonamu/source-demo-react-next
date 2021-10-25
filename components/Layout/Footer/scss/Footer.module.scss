@@ -7,13 +7,12 @@
     width: 100%;
     min-height: 400px;
     background: #E5E5E5;
-    // background: red;
 }
 
 .footer-main{
     margin: 0 auto;
     display: grid; 
-    grid-template-columns: 280px 280px 270px 250px;
+    grid-template-columns: 380px 380px 300px 300px;
     padding: 0 32px;
     .font-{
         font-style: normal;
