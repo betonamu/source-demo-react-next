@@ -36,6 +36,14 @@ const Detail = () => {
     const products = product?.images?.map((item, index) => (
         <img src={item.url}/>
       ));
+    
+    
+
+    const [id, setId]=useState(1);
+    const [value, setValue]=useState(1);
+    const changeId = (id) =>{
+        setId(id);
+    }
 
     return (
         <div className={styles.text}>
@@ -45,10 +53,10 @@ const Detail = () => {
                         <div className={styles.textMr}>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                                    <li class="breadcrumb-item active">Trang chủ</li>
                                     <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Chăm sóc sắc đẹp</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Nước tẩy trang tươi mát Loreal Mic...</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Sản phẩm tiện lợi</li>
+                                    <li class="breadcrumb-item" aria-current="page">Áo mưa Pharmacity</li>
                                 </ol>
                             </nav>
                         </div>
@@ -94,12 +102,12 @@ const Detail = () => {
                                     <div className={styles.li3}>
                                         {parse(String(product?.description))}
                                     </div>
-                                    {/* <div className={styles.tuyChon}>
+                                    <div className={styles.tuyChon}>
                                         <p>Tùy chọn sản phẩm</p>
                                         <samp className={styles.tcColor}><IconCheck/> 400ml</samp>
                                         <samp>500ml</samp>
                                         <samp>250ml</samp>
-                                    </div> */}
+                                    </div>
                                     <div className={styles.xemThuoc}>
                                         <a>Xem các nhà thuốc còn hàng</a><IconDownCategory />
                                         <div>
@@ -109,8 +117,8 @@ const Detail = () => {
                                         </div>
                                     </div>
                                     <div className={styles.muaHang}>
-                                        <a className={styles.trang}>Mua ngay</a>
-                                        <a className={styles.xanh}><IconCart /> Thêm vào giỏ hàng</a>
+                                        <div className={styles.trang}>Mua ngay</div>
+                                        <div className={styles.xanh}><IconCart /> Thêm vào giỏ hàng</div>
                                     </div>
                                     {
                                         product?.variants?.map(item=>(
@@ -146,11 +154,12 @@ const Detail = () => {
                     <div>
                         <div className={styles.boxLeft}>
                             <div className={styles.boxa}>
-                                <a>Mô tả</a>
-                                <a>Thông tin sản phẩm</a>
-                                <a>Thương hiệu</a>
+                                <a value="1" onClick={()=>setValue(1)} className={classNames(styles.boxa, {[styles.active]: value === 1})}  handeChangeValue={changeId}>Mô tả</a>
+                                <a value="2" onClick={()=>setValue(2)} className={classNames(styles.boxa, {[styles.active]: value === 2})}  handeChangeValue={changeId}>Thông tin sản phẩm</a>
+                                <a value="3" onClick={()=>setValue(3)} className={classNames(styles.boxa, {[styles.active]: value === 3})}  handeChangeValue={changeId}>Thương hiệu</a>
                             </div>
                             <div>
+                                {/* {id} */}
                                 <p>
                                     <span>Loại da phù hợp:</span>Dành cho da hỗn hợp hoặc da dầu, phù hợp cho cả da nhạy cảm.<br/><br/>
                                     <span>Thành phần:</span> Nước và dầu với cấu trúc Micelles trong nước giúp dễ dàng bám vào bông tẩy trang.<br/><br/>
@@ -175,7 +184,7 @@ const Detail = () => {
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Mời bạn nhập câu hỏi, bình luận, đánh giá về sản phẩm “Khẩu trang y tế Pharmacity màu xanh dương (Gói 10 cái)”..."></textarea>
                                 <button type="submit" class="btn btn-primary">Gửi</button>
                             </div>
-                            <div className={styles.mrTop}>Tất cả <spam><IconDownCategory/></spam></div>
+                            <div className={styles.mrTop}>Tất cả <spam><IconDownCategory stroke="#0065FF"/></spam></div>
                             <div>
                                 <div className={styles.boxComment}>
                                     <div className={styles.boxComment1}>
@@ -318,7 +327,7 @@ const Detail = () => {
                                 <img src="./images/Rectangle 306c.png" class="card-img-top"/>
                                 <IconStar width="50" height="50" stroke="#B2BAC6"/>
                                 <div className={styles.giamGia}>-30%</div>
-                                <div className={styles.cardBody}>
+                                <div class="card-body" className={styles.cardBody}>
                                     <div className={styles.boxCard}>
                                         <p class="card-text">Thương hiệu</p>
                                         <img src="https://s3-ap-southeast-1.amazonaws.com/pharmacity-ecm-asm-dev/thang-9/brand-list/pmc.webp"/>
@@ -333,7 +342,6 @@ const Detail = () => {
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
