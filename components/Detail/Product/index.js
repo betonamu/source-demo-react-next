@@ -23,6 +23,21 @@ const Detail = () => {
         dispatch(productActions.getDetail({slug}));
     }, []);
 
+    const list = [
+        {
+            'id':1,
+            'name': "Mô tả",
+        },
+        {
+            'id':2,
+            'name': "Thông tin sản phẩm"
+        },
+        {
+            'id':3,
+            'name': "Thương hiệu"
+        }
+    ];
+
     const configCarouselBtn = {
         
         nextButtonStyle: {
@@ -36,14 +51,8 @@ const Detail = () => {
     const products = product?.images?.map((item, index) => (
         <img src={item.url}/>
       ));
-    
-    
 
-    const [id, setId]=useState(1);
-    const [value, setValue]=useState(1);
-    const changeId = (id) =>{
-        setId(id);
-    }
+    const [value, setValue]=useState('Mô tả');
 
     return (
         <div className={styles.text}>
@@ -86,7 +95,10 @@ const Detail = () => {
                             </div>
                         </div>
                         <div>
-                            <h4>{product?.name}</h4>
+                            <div className={styles.boxName}>
+                                <h4>{product?.name}</h4>
+                                <IconStar width="30" height="30" stroke="#B2BAC6"/>
+                            </div>
                             <div className={styles.boxNho}>
                                 <div>
                                     <span className={styles.starFill}><IconStar fill="#FFD211"/>4.8 (456 Đánh giá)</span>
@@ -134,7 +146,7 @@ const Detail = () => {
                                             </div>
                                             <span>{product?.brand?.code}</span>
                                         </div>
-                                        <p>{product?.brand?.shortDescription}</p>
+                                        <p>Giảm mạnh cơn đau. Tác dụng nhanh. Không gây buồn ngủ. Điều trị đau nhẹ đến vừa và hạ sốt. Tìm hiểu ngay! Không Hại, không dị ứng...</p>
                                         <div className={styles.center}><a>Xem thêm</a></div>
                                     </div>
                                     <div className={styles.boxDuoi}>
@@ -154,29 +166,32 @@ const Detail = () => {
                     <div>
                         <div className={styles.boxLeft}>
                             <div className={styles.boxa}>
-                                <a value="1" onClick={()=>setValue(1)} className={classNames(styles.boxa, {[styles.active]: value === 1})}  handeChangeValue={changeId}>Mô tả</a>
-                                <a value="2" onClick={()=>setValue(2)} className={classNames(styles.boxa, {[styles.active]: value === 2})}  handeChangeValue={changeId}>Thông tin sản phẩm</a>
-                                <a value="3" onClick={()=>setValue(3)} className={classNames(styles.boxa, {[styles.active]: value === 3})}  handeChangeValue={changeId}>Thương hiệu</a>
+                                {list.map((item, index) => (
+                                    <a item={item} onClick={() =>setValue(item.name)} className={classNames(styles.boxa, {[styles.active]: value === item.name})}>{item.name}</a>
+                                ))}
                             </div>
-                            <div>
-                                {/* {id} */}
-                                <p>
-                                    <span>Loại da phù hợp:</span>Dành cho da hỗn hợp hoặc da dầu, phù hợp cho cả da nhạy cảm.<br/><br/>
-                                    <span>Thành phần:</span> Nước và dầu với cấu trúc Micelles trong nước giúp dễ dàng bám vào bông tẩy trang.<br/><br/>
-                                    <span>Công dụng:</span> Tẩy trang, làm sạch da, giúp lấy đi mọi cặn trang điểm, bụi bẩn mà không làm khô da hay gây kích ứng, mang đến cho bạn cảm giác thoải mái dễ chịu.
-                                    Giúp da mềm mịn và tươi mát với Glycerin.
-                                </p>
+                            <div className={classNames(styles.boxa, {[styles.hide]: value != list[0].name})}>
+                                <div>
+                                    <p>
+                                        <span>Loại da phù hợp:</span>Dành cho da hỗn hợp hoặc da dầu, phù hợp cho cả da nhạy cảm.<br/><br/>
+                                        <span>Thành phần:</span> Nước và dầu với cấu trúc Micelles trong nước giúp dễ dàng bám vào bông tẩy trang.<br/><br/>
+                                        <span>Công dụng:</span> Tẩy trang, làm sạch da, giúp lấy đi mọi cặn trang điểm, bụi bẩn mà không làm khô da hay gây kích ứng, mang đến cho bạn cảm giác thoải mái dễ chịu.
+                                        Giúp da mềm mịn và tươi mát với Glycerin.
+                                    </p>
+                                </div>
+                                <div>
+                                    <img src="./images/image 246.png" />
+                                </div>
+                                <div>
+                                    <p><span>Hướng dẫn sử dụng:</span>
+                                        Thấm một lượng vừa đủ ra bông tẩy trang lau nhẹ nhàng trên da mặt, vùng da quanh mắt & môi theo hướng xoay tròn.
+                                        Không cần rửa lại với nước, tránh tiếp xúc trực tiếp với mắt
+                                    </p>
+                                    <div className={styles.center}>Xem thêm <spam><IconDownCategory/></spam></div>
+                                </div>
                             </div>
-                            <div>
-                                <img src="./images/image 246.png" />
-                            </div>
-                            <div>
-                                <p><span>Hướng dẫn sử dụng:</span>
-                                    Thấm một lượng vừa đủ ra bông tẩy trang lau nhẹ nhàng trên da mặt, vùng da quanh mắt & môi theo hướng xoay tròn.
-                                    Không cần rửa lại với nước, tránh tiếp xúc trực tiếp với mắt
-                                </p>
-                                <div className={styles.center}>Xem thêm <spam><IconDownCategory/></spam></div>
-                            </div>
+                            <div className={classNames(styles.boxa, {[styles.hide]: value != list[1].name})}>Thông tin sản phẩm</div>
+                            <div className={classNames(styles.boxa, {[styles.hide]: value != list[2].name})}>Thương hiệu</div>
                         </div>
                         <div className={styles.boxLeft1}>
                             <h3>Đánh giá (234) <span> <IconStar fill="#FFD211"/> 4.8 (456 Đánh giá)</span></h3>
@@ -274,7 +289,7 @@ const Detail = () => {
                             <h3>Sản phẩm tương tự</h3>
                             <div className={styles.cardTo}>
                                 <img src="./images/Rectangle 306.png" class="card-img-top"/>
-                                <IconStar width="50" height="50" stroke="#B2BAC6"/>
+                                <IconStar width="40" height="40" stroke="#B2BAC6"/>
                                 <div className={styles.giamGia}>-30%</div>
                                 <div class="card-body" className={styles.cardBody}>
                                     <div className={styles.boxCard}>
@@ -291,7 +306,7 @@ const Detail = () => {
                             </div>
                             <div className={styles.cardTo}>
                                 <img src="./images/Rectangle 306a.png" class="card-img-top"/>
-                                <IconStar width="50" height="50" stroke="#B2BAC6"/>
+                                <IconStar width="40" height="40" stroke="#B2BAC6"/>
                                 <div className={styles.giamGia}>-30%</div>
                                 <div class="card-body" className={styles.cardBody}>
                                     <div className={styles.boxCard}>
@@ -308,7 +323,7 @@ const Detail = () => {
                             </div>
                             <div className={styles.cardTo}>
                                 <img src="./images/Rectangle 306b.png" class="card-img-top"/>
-                                <IconStar width="50" height="50" stroke="#B2BAC6"/>
+                                <IconStar width="40" height="40" stroke="#B2BAC6"/>
                                 <div className={styles.giamGia}>-30%</div>
                                 <div class="card-body" className={styles.cardBody}>
                                     <div className={styles.boxCard}>
@@ -325,7 +340,7 @@ const Detail = () => {
                             </div>
                             <div className={styles.cardTo}>
                                 <img src="./images/Rectangle 306c.png" class="card-img-top"/>
-                                <IconStar width="50" height="50" stroke="#B2BAC6"/>
+                                <IconStar width="40" height="40" stroke="#B2BAC6"/>
                                 <div className={styles.giamGia}>-30%</div>
                                 <div class="card-body" className={styles.cardBody}>
                                     <div className={styles.boxCard}>
