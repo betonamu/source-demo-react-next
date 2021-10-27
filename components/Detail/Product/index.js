@@ -173,7 +173,7 @@ const Detail = () => {
                             <div className={classNames(styles.boxa, {[styles.hide]: value != list[0].name})}>
                                 <div>
                                     <p>
-                                        <span>Loại da phù hợp:</span>Dành cho da hỗn hợp hoặc da dầu, phù hợp cho cả da nhạy cảm.<br/><br/>
+                                        <span>Loại da phù hợp:</span> Dành cho da hỗn hợp hoặc da dầu, phù hợp cho cả da nhạy cảm.<br/><br/>
                                         <span>Thành phần:</span> Nước và dầu với cấu trúc Micelles trong nước giúp dễ dàng bám vào bông tẩy trang.<br/><br/>
                                         <span>Công dụng:</span> Tẩy trang, làm sạch da, giúp lấy đi mọi cặn trang điểm, bụi bẩn mà không làm khô da hay gây kích ứng, mang đến cho bạn cảm giác thoải mái dễ chịu.
                                         Giúp da mềm mịn và tươi mát với Glycerin.
