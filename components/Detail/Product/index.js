@@ -183,7 +183,7 @@ const Detail = () => {
                                     <img src="./images/image 246.png" />
                                 </div>
                                 <div>
-                                    <p><span>Hướng dẫn sử dụng:</span>
+                                    <p><span>Hướng dẫn sử dụng:</span><br/>
                                         Thấm một lượng vừa đủ ra bông tẩy trang lau nhẹ nhàng trên da mặt, vùng da quanh mắt & môi theo hướng xoay tròn.
                                         Không cần rửa lại với nước, tránh tiếp xúc trực tiếp với mắt
                                     </p>
