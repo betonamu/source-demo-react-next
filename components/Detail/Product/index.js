@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useMemo, useState, useEffect } from 'react';
 import parse from 'html-react-parser';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/dist/client/router';
@@ -11,7 +11,26 @@ import { IconStar, IconCheck, IconQueMark, IconDownCategory,IconCart } from "../
 
 import styles from './scss/Detail.module.scss';
 
-const Detail = () => {
+const Detail = ({ compactHeight = 130 }) => {
+
+    const [isSeeMore, setIsSeeMore] = useState(false);
+    const [isShortContent, setIsShortContent] = useState(true);
+    const ref = useRef();
+
+    const xemthemContent = () => {
+        setIsSeeMore(prev => !prev);
+    }
+
+    const fullContentHeight = ref.current?.offsetHeight || 'fit-content';
+
+    const currentHeightShow = useMemo(() => {
+        return isSeeMore ? fullContentHeight : compactHeight;
+    }, [isSeeMore]);
+
+    useEffect(() => {
+        setIsShortContent(ref.current?.offsetHeight > compactHeight)
+    }, [])
+
 
     const [productIndex, setProductIndex] = useState(0);
     const dispatch = useDispatch();
@@ -22,6 +41,15 @@ const Detail = () => {
     useEffect(() => {
         dispatch(productActions.getDetail({slug}));
     }, []);
+
+    const configCarouselBtn = {
+        nextButtonStyle: {display: "none",},
+        prevButtonStyle: {display: "none",}
+    }
+
+    const products = product?.images?.map((item, index) => (
+        <img src={item.url}/>
+      ));
 
     const list = [
         {
@@ -38,36 +66,35 @@ const Detail = () => {
         }
     ];
 
-    const configCarouselBtn = {
-        
-        nextButtonStyle: {
-            display: "none",
-        },
-        prevButtonStyle: {
-            display: "none",
-        }
-    }
-
-    const products = product?.images?.map((item, index) => (
-        <img src={item.url}/>
-      ));
-
     const [value, setValue]=useState('Mô tả');
 
+    const [count, setCount] = useState(1);
+
+    const Tang = () =>{
+        setCount(x => x + 1);
+    }
+    const Giam = () =>{
+        if( count <= 1 ){
+            x = 1;
+        }else{
+            setCount(x => x - 1);
+        }
+    }
+    
     return (
         <div className={styles.text}>
             <div>
                 <div className="container">
                     <div className={styles.bg}>
                         <div className={styles.textMr}>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item active">Trang chủ</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Sản phẩm tiện lợi</li>
-                                    <li class="breadcrumb-item" aria-current="page">Áo mưa Pharmacity</li>
-                                </ol>
-                            </nav>
+                            {
+                                <ul>
+                                    <li><a>Trang chủ</a><span></span></li>
+                                    <li><a>{product?.category?.parent?.parent?.name}</a><span></span></li>
+                                    <li><a>{product?.category?.parent?.name}</a><span></span></li>
+                                    <li><a>{product?.category?.name}</a></li>
+                                </ul>
+                            }
                         </div>
                     </div>
                 </div>
@@ -97,7 +124,7 @@ const Detail = () => {
                         <div>
                             <div className={styles.boxName}>
                                 <h4>{product?.name}</h4>
-                                <IconStar width="30" height="30" stroke="#B2BAC6"/>
+                                <IconStar width="30" height="30" stroke="#5E6F88"/>
                             </div>
                             <div className={styles.boxNho}>
                                 <div>
@@ -107,25 +134,18 @@ const Detail = () => {
                                             {Intl.NumberFormat('en-VN', { maximumSignificantDigits: 3 }).format(product?.pricing?.priceRange?.start?.gross?.amount)}
                                             <samp>{product?.pricing?.priceRange?.start?.gross?.currency}</samp>
                                         </a>
-                                        {/* <a className={styles.a2}>132.300 đ</a> */}
                                         <span>-30%</span>
                                         <p>Mua hàng và tích <samp>161 điểm</samp> ExtraCare <IconQueMark/></p>
                                     </div>
                                     <div className={styles.li3}>
                                         {parse(String(product?.description))}
                                     </div>
-                                    <div className={styles.tuyChon}>
-                                        <p>Tùy chọn sản phẩm</p>
-                                        <samp className={styles.tcColor}><IconCheck/> 400ml</samp>
-                                        <samp>500ml</samp>
-                                        <samp>250ml</samp>
-                                    </div>
                                     <div className={styles.xemThuoc}>
                                         <a>Xem các nhà thuốc còn hàng</a><IconDownCategory />
                                         <div>
-                                            <input type="button" value="-"/>
-                                            <input type="text" value="10"/>
-                                            <input type="button" value="+"/>
+                                            <input type="button" value="-" onClick={() => Giam()}/>
+                                            <input type="text" value={count}/>
+                                            <input type="button" value="+" onClick={() => Tang()}/>
                                         </div>
                                     </div>
                                     <div className={styles.muaHang}>
@@ -144,9 +164,9 @@ const Detail = () => {
                                             <div className={styles.logoLo}>
                                                 <img src={product?.brand?.image}/>
                                             </div>
-                                            <span>{product?.brand?.code}</span>
+                                            <span>{product?.brand?.name}</span>
                                         </div>
-                                        <p>Giảm mạnh cơn đau. Tác dụng nhanh. Không gây buồn ngủ. Điều trị đau nhẹ đến vừa và hạ sốt. Tìm hiểu ngay! Không Hại, không dị ứng...</p>
+                                        <p>{product?.brand?.shortDescription}</p>
                                         <div className={styles.center}><a>Xem thêm</a></div>
                                     </div>
                                     <div className={styles.boxDuoi}>
@@ -171,27 +191,40 @@ const Detail = () => {
                                 ))}
                             </div>
                             <div className={classNames(styles.boxa, {[styles.hide]: value != list[0].name})}>
-                                <div>
-                                    <p>
-                                        <span>Loại da phù hợp:</span> Dành cho da hỗn hợp hoặc da dầu, phù hợp cho cả da nhạy cảm.<br/><br/>
-                                        <span>Thành phần:</span> Nước và dầu với cấu trúc Micelles trong nước giúp dễ dàng bám vào bông tẩy trang.<br/><br/>
-                                        <span>Công dụng:</span> Tẩy trang, làm sạch da, giúp lấy đi mọi cặn trang điểm, bụi bẩn mà không làm khô da hay gây kích ứng, mang đến cho bạn cảm giác thoải mái dễ chịu.
-                                        Giúp da mềm mịn và tươi mát với Glycerin.
-                                    </p>
-                                </div>
-                                <div>
-                                    <img src="./images/image 246.png" />
-                                </div>
-                                <div>
-                                    <p><span>Hướng dẫn sử dụng:</span><br/>
-                                        Thấm một lượng vừa đủ ra bông tẩy trang lau nhẹ nhàng trên da mặt, vùng da quanh mắt & môi theo hướng xoay tròn.
-                                        Không cần rửa lại với nước, tránh tiếp xúc trực tiếp với mắt
-                                    </p>
-                                    <div className={styles.center}>Xem thêm <spam><IconDownCategory/></spam></div>
+                            {
+                                product?.metadata?.map(item=>(
+                                    <div className={classNames({
+                                        [styles.compactContent]: true,
+                                        [styles.hasXemthem]: isSeeMore,
+                                    })}>
+                                    <div className={styles.body} style={{ height: currentHeightShow }}>
+                                        <div ref={ref}>
+                                            {parse(String(item.value))}
+                                        </div>
+                                    </div>
+                                        {
+                                            isShortContent &&
+                                            <div className={styles.xemthemButton}>
+                                                <button onClick={() => xemthemContent()}>
+                                                    {!isSeeMore ? "Xem thêm" : "Thu gọn"}
+                                                </button><spam><IconDownCategory/></spam>
+                                            </div>
+                                        }
+                                    </div>
+                                ))
+                            }
+                            </div>
+                            <div className={classNames(styles.boxa, {[styles.hide]: value != list[1].name})}>
+                                <div className={styles.thongTin}>
+                                    <strong>Brand</strong>
+                                    <spam>{product?.brand?.name}</spam>
                                 </div>
                             </div>
-                            <div className={classNames(styles.boxa, {[styles.hide]: value != list[1].name})}>Thông tin sản phẩm</div>
-                            <div className={classNames(styles.boxa, {[styles.hide]: value != list[2].name})}>Thương hiệu</div>
+                            <div className={classNames(styles.boxa, {[styles.hide]: value != list[2].name})}>
+                                <div>
+                                    {product?.brand?.description}
+                                </div>
+                            </div>
                         </div>
                         <div className={styles.boxLeft1}>
                             <h3>Đánh giá (234) <span> <IconStar fill="#FFD211"/> 4.8 (456 Đánh giá)</span></h3>
@@ -287,74 +320,33 @@ const Detail = () => {
                     <div>
                         <div className={styles.boxRight}>
                             <h3>Sản phẩm tương tự</h3>
-                            <div className={styles.cardTo}>
-                                <img src="./images/Rectangle 306.png" class="card-img-top"/>
-                                <IconStar width="40" height="40" stroke="#B2BAC6"/>
-                                <div className={styles.giamGia}>-30%</div>
-                                <div class="card-body" className={styles.cardBody}>
-                                    <div className={styles.boxCard}>
-                                        <p class="card-text">Thương hiệu</p>
-                                        <img src="https://s3-ap-southeast-1.amazonaws.com/pharmacity-ecm-asm-dev/thang-9/brand-list/pmc.webp"/>
+                            {
+                                product?.category?.products?.edges?.map(item=>(
+                                    <div className={styles.cardTo}>
+                                        <img src={item.node?.thumbnail?.url} class="card-img-top"/>
+                                        <IconStar width="40" height="40" stroke="#B2BAC6"/>
+                                        <div className={styles.giamGia}>-30%</div>
+                                        <div class="card-body" className={styles.cardBody}>
+                                            <div className={styles.boxCard}>
+                                                <p class="card-text">Thương hiệu</p>
+                                                <img src="https://s3-ap-southeast-1.amazonaws.com/pharmacity-ecm-asm-dev/thang-9/brand-list/pmc.webp"/>
+                                            </div>
+                                            <div className={styles.cardSpan}>
+                                                <span>344.000 VNĐ</span>
+                                                <span>
+                                                    {Intl.NumberFormat('en-VN', { maximumSignificantDigits: 3 }).format(item.node?.pricing?.priceRange?.start?.gross?.amount)}
+                                                    <samp>{item.node?.pricing?.priceRange?.start.gross?.currency}</samp>
+                                                    <spam>/{item.node?.variants[0]?.name}</spam>
+                                                </span>
+                                            </div>
+                                            <h5 class="card-title">{item.node?.name}</h5>
+                                            <div className={styles.center}>
+                                                <button type="submit" class="btn btn-success">Thêm vào giỏ hàng</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className={styles.cardSpan}>
-                                        <span>344.000 VNĐ</span>
-                                        <span>320.000 VND<spam>/Hộp</spam></span>
-                                    </div>
-                                    <h5 class="card-title">Thực phẩm bảo vệ sức khỏe viên uống bổ sung...</h5>
-                                    <button type="submit" class="btn btn-success">Thêm vào giỏ hàng</button>
-                                </div>
-                            </div>
-                            <div className={styles.cardTo}>
-                                <img src="./images/Rectangle 306a.png" class="card-img-top"/>
-                                <IconStar width="40" height="40" stroke="#B2BAC6"/>
-                                <div className={styles.giamGia}>-30%</div>
-                                <div class="card-body" className={styles.cardBody}>
-                                    <div className={styles.boxCard}>
-                                        <p class="card-text">Thương hiệu</p>
-                                        <img src="https://s3-ap-southeast-1.amazonaws.com/pharmacity-ecm-asm-dev/thang-9/brand-list/pmc.webp"/>
-                                    </div>
-                                    <div className={styles.cardSpan}>
-                                        <span>344.000 VNĐ</span>
-                                        <span>320.000 VND<spam>/Hộp</spam></span>
-                                    </div>
-                                    <h5 class="card-title">Thực phẩm bảo vệ sức khỏe viên uống bổ sung...</h5>
-                                    <button type="submit" class="btn btn-success">Thêm vào giỏ hàng</button>
-                                </div>
-                            </div>
-                            <div className={styles.cardTo}>
-                                <img src="./images/Rectangle 306b.png" class="card-img-top"/>
-                                <IconStar width="40" height="40" stroke="#B2BAC6"/>
-                                <div className={styles.giamGia}>-30%</div>
-                                <div class="card-body" className={styles.cardBody}>
-                                    <div className={styles.boxCard}>
-                                        <p class="card-text">Thương hiệu</p>
-                                        <img src="https://s3-ap-southeast-1.amazonaws.com/pharmacity-ecm-asm-dev/thang-9/brand-list/pmc.webp"/>
-                                    </div>
-                                    <div className={styles.cardSpan}>
-                                        <span>344.000 VNĐ</span>
-                                        <span>320.000 VND<spam>/Hộp</spam></span>
-                                    </div>
-                                    <h5 class="card-title">Thực phẩm bảo vệ sức khỏe viên uống bổ sung...</h5>
-                                    <button type="submit" class="btn btn-success">Thêm vào giỏ hàng</button>
-                                </div>
-                            </div>
-                            <div className={styles.cardTo}>
-                                <img src="./images/Rectangle 306c.png" class="card-img-top"/>
-                                <IconStar width="40" height="40" stroke="#B2BAC6"/>
-                                <div className={styles.giamGia}>-30%</div>
-                                <div class="card-body" className={styles.cardBody}>
-                                    <div className={styles.boxCard}>
-                                        <p class="card-text">Thương hiệu</p>
-                                        <img src="https://s3-ap-southeast-1.amazonaws.com/pharmacity-ecm-asm-dev/thang-9/brand-list/pmc.webp"/>
-                                    </div>
-                                    <div className={styles.cardSpan}>
-                                        <span>344.000 VNĐ</span>
-                                        <span>320.000 VND<spam>/Hộp</spam></span>
-                                    </div>
-                                    <h5 class="card-title">Thực phẩm bảo vệ sức khỏe viên uống bổ sung...</h5>
-                                    <button type="submit" class="btn btn-success">Thêm vào giỏ hàng</button>
-                                </div>
-                            </div>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
