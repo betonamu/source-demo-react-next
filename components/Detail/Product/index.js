@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import parse from 'html-react-parser';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/dist/client/router';
@@ -6,31 +6,13 @@ import Carousel from 'nuka-carousel';
 import classNames from 'classnames';
 
 import { productActions } from '../../../redux/actions';
+import CompactContent from '../../CompactContent';
 
 import { IconStar, IconCheck, IconQueMark, IconDownCategory,IconCart } from "../../../asstes/icons";
 
 import styles from './scss/Detail.module.scss';
 
-const Detail = ({ compactHeight = 130 }) => {
-
-    const [isSeeMore, setIsSeeMore] = useState(false);
-    const [isShortContent, setIsShortContent] = useState(true);
-    const ref = useRef();
-
-    const xemthemContent = () => {
-        setIsSeeMore(prev => !prev);
-    }
-
-    const fullContentHeight = ref.current?.offsetHeight || 'fit-content';
-
-    const currentHeightShow = useMemo(() => {
-        return isSeeMore ? fullContentHeight : compactHeight;
-    }, [isSeeMore]);
-
-    useEffect(() => {
-        setIsShortContent(ref.current?.offsetHeight > compactHeight)
-    }, [])
-
+const Detail = () => {
 
     const [productIndex, setProductIndex] = useState(0);
     const dispatch = useDispatch();
@@ -80,6 +62,18 @@ const Detail = ({ compactHeight = 130 }) => {
             setCount(x => x - 1);
         }
     }
+    
+    const getMetaDataByKey = (product ,key) => {
+        let value = null;
+        if(product && key){
+            product?.metadata?.forEach(item => {
+                if(item?.key === key)
+                    value = item.value;
+            });
+        }
+        return value;
+    }
+
     
     return (
         <div className={styles.text}>
@@ -191,28 +185,11 @@ const Detail = ({ compactHeight = 130 }) => {
                                 ))}
                             </div>
                             <div className={classNames(styles.boxa, {[styles.hide]: value != list[0].name})}>
-                            {
-                                product?.metadata?.map(item=>(
-                                    <div className={classNames({
-                                        [styles.compactContent]: true,
-                                        [styles.hasXemthem]: isSeeMore,
-                                    })}>
-                                    <div className={styles.body} style={{ height: currentHeightShow }}>
-                                        <div ref={ref}>
-                                            {parse(String(item.value))}
-                                        </div>
-                                    </div>
-                                        {
-                                            isShortContent &&
-                                            <div className={styles.xemthemButton}>
-                                                <button onClick={() => xemthemContent()}>
-                                                    {!isSeeMore ? "Xem thêm" : "Thu gọn"}
-                                                </button><spam><IconDownCategory/></spam>
-                                            </div>
-                                        }
-                                    </div>
-                                ))
-                            }
+                            
+                                <CompactContent>
+                                    {parse(String(getMetaDataByKey(product,"Describe")))}
+                                </CompactContent>
+                                
                             </div>
                             <div className={classNames(styles.boxa, {[styles.hide]: value != list[1].name})}>
                                 <div className={styles.thongTin}>

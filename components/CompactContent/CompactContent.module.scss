@@ -1,6 +1,5 @@
 .compact-content {
     position: relative;
-    width: 500px;
     margin: 0 auto;
 
     &.has-toggle {
@@ -31,18 +30,19 @@
         align-items: flex-end;
         transition: all 0.3s;
         padding: 4px 0;
+        margin-bottom: 0 !important;
 
         button {
             font-size: 12px;
             line-height: 16px;
-            color: #0f62f9;
+            color: #112950;
             display: inline-flex;
             align-items: center;
             outline: none;
             background: no-repeat;
             border: none;
             border-radius: 0;
-            padding: 4px 12px;
+            padding: 4px;
             text-decoration: underline;
             cursor: pointer;
         }
