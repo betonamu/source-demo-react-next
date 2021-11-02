@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/dist/client/router';
 import Carousel from 'nuka-carousel';
 import classNames from 'classnames';
+import Link from 'next/link'; 
 
 import { productActions } from '../../../redux/actions';
 import CompactContent from '../../CompactContent';
@@ -11,7 +12,6 @@ import CompactContent from '../../CompactContent';
 import { IconStar, IconCheck, IconQueMark, IconDownCategory,IconCart } from "../../../asstes/icons";
 
 import styles from './scss/Detail.module.scss';
-
 const Detail = () => {
 
     const [productIndex, setProductIndex] = useState(0);
@@ -74,21 +74,50 @@ const Detail = () => {
         return value;
     }
 
-    
+    const getBreadcrumb = (category) => {
+        let _breadcrumb = [];
+        if (!category?.parent) {
+            _breadcrumb.push(category);
+            return _breadcrumb;
+        }
+        _breadcrumb.push(category);
+        return [..._breadcrumb, ...getBreadcrumb(category?.parent)];
+    }
+    const arrCategory = getBreadcrumb(product?.category);
+    const breadcrumbFromCategory = arrCategory.filter(item => item?.name !== 'All' && item?.name !== 'PHCT-Pharmacity' && item?.name !== 'Tất cả')
+        .reduce((arr, item, index) => {
+            arr.unshift({label: item?.name, url: "/"}) //
+            return arr;
+        }, []);
+    const breadcrumbBase = [
+        {
+            label: 'Trang chủ',
+            url: '/', //
+            active: false
+        },
+        ...breadcrumbFromCategory
+    ];
+
+
+
     return (
         <div className={styles.text}>
             <div>
                 <div className="container">
                     <div className={styles.bg}>
                         <div className={styles.textMr}>
-                            {
-                                <ul>
-                                    <li><a>Trang chủ</a><span></span></li>
-                                    <li><a>{product?.category?.parent?.parent?.name}</a><span></span></li>
-                                    <li><a>{product?.category?.parent?.name}</a><span></span></li>
-                                    <li><a>{product?.category?.name}</a></li>
-                                </ul>
-                            }
+                            <ul>
+                            {breadcrumbBase.map((item, index) => (
+                                <li>
+                                    <Link href={item.url}>
+                                        <a>{item.label}</a>
+                                    </Link>
+                                    {
+                                        (index < breadcrumbBase.length -1) && <span></span>
+                                    }
+                                </li>
+                            ))}
+                            </ul>
                         </div>
                     </div>
                 </div>
