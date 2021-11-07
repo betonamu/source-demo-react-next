@@ -12,6 +12,7 @@ import CompactContent from '../../CompactContent';
 import { IconStar, IconCheck, IconQueMark, IconDownCategory,IconCart } from "../../../asstes/icons";
 
 import styles from './scss/Detail.module.scss';
+
 const Detail = () => {
 
     const [productIndex, setProductIndex] = useState(0);
@@ -86,13 +87,13 @@ const Detail = () => {
     const arrCategory = getBreadcrumb(product?.category);
     const breadcrumbFromCategory = arrCategory.filter(item => item?.name !== 'All' && item?.name !== 'PHCT-Pharmacity' && item?.name !== 'Tất cả')
         .reduce((arr, item, index) => {
-            arr.unshift({label: item?.name, url: "/"}) //
+            arr.unshift({label: item?.name, url: "/"})
             return arr;
         }, []);
     const breadcrumbBase = [
         {
             label: 'Trang chủ',
-            url: '/', //
+            url: '/',
             active: false
         },
         ...breadcrumbFromCategory
@@ -109,12 +110,8 @@ const Detail = () => {
                             <ul>
                             {breadcrumbBase.map((item, index) => (
                                 <li>
-                                    <Link href={item.url}>
-                                        <a>{item.label}</a>
-                                    </Link>
-                                    {
-                                        (index < breadcrumbBase.length -1) && <span></span>
-                                    }
+                                    <Link href={item.url}><a>{item.label}</a></Link>
+                                    {(index < breadcrumbBase.length -1) && <span></span>}
                                 </li>
                             ))}
                             </ul>
