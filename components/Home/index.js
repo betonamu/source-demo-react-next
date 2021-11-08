@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { homeActions, categoryActions } from "../../redux/actions";
 import Container from "../Common/Container";
 import FlashSale from "./FlashSale";
+import Product from "./Product";
 import Slider from "./Slider";
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
         <Container>
             <Slider />
             < FlashSale />
+            <Product/>
         </Container>
     );
 }
