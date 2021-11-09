@@ -18,7 +18,6 @@ const Home = () => {
     }, []);
 
     const product = useSelector(state=>state.home.getList);
-    console.log('Product',product);
     
     useEffect(() => {
         dispatch(homeActions.getList());

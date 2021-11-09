@@ -3,15 +3,14 @@ import Carousel from 'nuka-carousel';
 
 import ProductItem from "../ProductItem";
 
-import { IconDownCategory, IconStar } from "../../../asstes/icons";
+import { IconDownCategory } from "../../../asstes/icons";
 
 import styles from "./Product.module.scss";
+
 const Product = ({ product }) => {
     
     const slidesToShow = 5
     const slidesToScroll = 2
-   
-    const icon = "https://www.pharmacity.vn/icons/no-image.svg";
 
     return (
         <div className={styles.text}>
