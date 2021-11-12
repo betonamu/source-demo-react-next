@@ -98,12 +98,10 @@ const Detail = () => {
 
     return (
         <div className={styles.text}>
-            <div>
-                <div className="container">
-                    <div className={styles.bg}>
-                        <div className={styles.textMr}>
-                            <Breadcrumb breadcrumbBase={breadcrumbBase}/>
-                        </div>
+            <div className="container">
+                <div className={styles.bg}>
+                    <div className={styles.textMr}>
+                        <Breadcrumb breadcrumbBase={breadcrumbBase}/>
                     </div>
                 </div>
             </div>
