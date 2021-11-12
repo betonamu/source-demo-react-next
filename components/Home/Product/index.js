@@ -18,6 +18,7 @@ const Product = ({ product }) => {
                 {
                     product?.collections?.edges?.map(item=>(
                         <div>
+                            <div className={styles.boxMau}></div>
                             <div className={styles.boxTitle}>
                                 <h3>{item.node?.name}</h3>
                                 <div className={styles.center}>Xem tất cả <spam><IconDownCategory stroke="#5DAC46"/></spam></div>
