@@ -1,9 +1,9 @@
 import { takeLatest } from 'redux-saga/effects';
 import apiConfig from '../../constants/apiConfig';
-import { productActionTypes } from "../actions";
+import { detailActionTypes } from "../actions";
 import { processLoadingAction } from '../helper';
 
-const {GET_DETAIL} = productActionTypes;
+const {GET_DETAIL} = detailActionTypes;
 
 const getDetail = (payload) => {
     return processLoadingAction(apiConfig.product.getDetail, payload);

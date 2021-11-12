@@ -6,7 +6,7 @@ import Carousel from 'nuka-carousel';
 import classNames from 'classnames';
 import Link from 'next/link'; 
 
-import { productActions } from '../../../redux/actions';
+import { detailActions } from '../../../redux/actions';
 import CompactContent from '../../CompactContent';
 
 import { IconStar, IconCheck, IconQueMark, IconDownCategory,IconCart } from "../../../asstes/icons";
@@ -22,7 +22,7 @@ const Detail = () => {
     const router = useRouter();
     const {slug} = router.query
     useEffect(() => {
-        dispatch(productActions.getDetail({slug}));
+        dispatch(detailActions.getDetail({slug}));
     }, []);
 
     const configCarouselBtn = {

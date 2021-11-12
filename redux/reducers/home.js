@@ -3,11 +3,12 @@ import { handleActions } from 'redux-actions';
 import { homeActionTypes } from '../actions';
 import { createSuccessActionType } from '../helper'
 
-const { FLASH_SALE, GET_COLLECTION_BY_ID } = homeActionTypes;
+const { FLASH_SALE, GET_COLLECTION_BY_ID, GET_LIST } = homeActionTypes;
 
 const initialState = {
     flashSale: [],
     flashSaleProduct: {},
+    getList: [],
 };
 
 const home = handleActions(
@@ -25,6 +26,12 @@ const home = handleActions(
             return {
                 ...state,
                 flashSaleProduct: action.payload.data
+            };
+        },
+        [createSuccessActionType(GET_LIST)]: (state, action) => {
+            return {
+                ...state,
+                getList: action.payload.collections.data
             };
         }
     },
