@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/dist/client/router';
 import Carousel from 'nuka-carousel';
 import classNames from 'classnames';
-import Link from 'next/link'; 
 
 import { detailActions } from '../../../redux/actions';
 import CompactContent from '../../CompactContent';
+import Breadcrumb from '../../Common/Breadcrumb'
 
 import { IconStar, IconCheck, IconQueMark, IconDownCategory,IconCart } from "../../../asstes/icons";
 
@@ -19,6 +19,7 @@ const Detail = () => {
     const dispatch = useDispatch();
 
     const product = useSelector(state=>state.product.getDetail);
+    console.log(product);
     const router = useRouter();
     const {slug} = router.query
     useEffect(() => {
@@ -84,12 +85,14 @@ const Detail = () => {
         _breadcrumb.push(category);
         return [..._breadcrumb, ...getBreadcrumb(category?.parent)];
     }
+
     const arrCategory = getBreadcrumb(product?.category);
     const breadcrumbFromCategory = arrCategory.filter(item => item?.name !== 'All' && item?.name !== 'PHCT-Pharmacity' && item?.name !== 'Tất cả')
-        .reduce((arr, item, index) => {
-            arr.unshift({label: item?.name, url: "/"})
-            return arr;
-        }, []);
+    .reduce((arr, item, index) => {
+        arr.unshift({label: item?.name, url: "/"})
+        return arr;
+    }, []);
+
     const breadcrumbBase = [
         {
             label: 'Trang chủ',
@@ -107,14 +110,15 @@ const Detail = () => {
                 <div className="container">
                     <div className={styles.bg}>
                         <div className={styles.textMr}>
-                            <ul>
+                            <Breadcrumb breadcrumbBase={breadcrumbBase}/>
+                            {/* <ul>
                             {breadcrumbBase.map((item, index) => (
                                 <li>
                                     <Link href={item.url}><a>{item.label}</a></Link>
                                     {(index < breadcrumbBase.length -1) && <span></span>}
                                 </li>
                             ))}
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                 </div>
