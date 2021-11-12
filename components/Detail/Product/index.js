@@ -111,14 +111,6 @@ const Detail = () => {
                     <div className={styles.bg}>
                         <div className={styles.textMr}>
                             <Breadcrumb breadcrumbBase={breadcrumbBase}/>
-                            {/* <ul>
-                            {breadcrumbBase.map((item, index) => (
-                                <li>
-                                    <Link href={item.url}><a>{item.label}</a></Link>
-                                    {(index < breadcrumbBase.length -1) && <span></span>}
-                                </li>
-                            ))}
-                            </ul> */}
                         </div>
                     </div>
                 </div>
