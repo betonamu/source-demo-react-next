@@ -1,0 +1,27 @@
+.count-down-slide {
+    display: flex;
+    margin: 100px;
+    column-gap: 20px;
+}
+
+.section {
+    display: flex;
+    background-color: gray;
+    color: white;
+    font-size: 50px;
+    height: 60px;
+    line-height: 50px;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.digit-wrapper {
+    position: relative;
+    top: -50px;
+    
+    &.move {
+        transform: translateY(50px);
+        transition: all 0.25s;
+    }
+}

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import CounterContext from "../../contexts/Counter/CounterContext";
+import CountDownSlide from "../CountDownSlide";
 
 const Home = () => {
     const [firstRender, setFirstRender] = useState(false);
 
     //cannot break in forEach
-    
+
     useEffect(() => {
         let arr = Array.from(Array(10).keys());
         for (let index = 0; index < arr.length; index++) {
@@ -28,6 +29,8 @@ const Home = () => {
                     </>
                 }
             </CounterContext.Consumer>
+
+            <CountDownSlide />
         </div>
     );
 }
