@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/dist/client/router';
 import Carousel from 'nuka-carousel';
 import classNames from 'classnames';
-import Link from 'next/link'; 
 
 import { detailActions } from '../../../redux/actions';
 import CompactContent from '../../CompactContent';
+import Breadcrumb from '../../Common/Breadcrumb'
 
 import { IconStar, IconCheck, IconQueMark, IconDownCategory,IconCart } from "../../../asstes/icons";
 
@@ -24,11 +24,6 @@ const Detail = () => {
     useEffect(() => {
         dispatch(detailActions.getDetail({slug}));
     }, []);
-
-    const configCarouselBtn = {
-        nextButtonStyle: {display: "none",},
-        prevButtonStyle: {display: "none",}
-    }
 
     const products = product?.images?.map((item, index) => (
         <img src={item.url}/>
@@ -103,19 +98,10 @@ const Detail = () => {
 
     return (
         <div className={styles.text}>
-            <div>
-                <div className="container">
-                    <div className={styles.bg}>
-                        <div className={styles.textMr}>
-                            <ul>
-                            {breadcrumbBase.map((item, index) => (
-                                <li>
-                                    <Link href={item.url}><a>{item.label}</a></Link>
-                                    {(index < breadcrumbBase.length -1) && <span></span>}
-                                </li>
-                            ))}
-                            </ul>
-                        </div>
+            <div className="container">
+                <div className={styles.bg}>
+                    <div className={styles.textMr}>
+                        <Breadcrumb breadcrumbBase={breadcrumbBase}/>
                     </div>
                 </div>
             </div>
@@ -124,7 +110,11 @@ const Detail = () => {
                     <div className={styles.boxTo}>
                         <div>
                             <div>
-                                <Carousel defaultControlsConfig={configCarouselBtn} slideIndex={productIndex}>
+                                <Carousel 
+                                    slideIndex={productIndex}
+                                    renderCenterLeftControls={false}
+                                    renderCenterRightControls={false}
+                                >
                                     {products}
                                 </Carousel>
                             </div>
