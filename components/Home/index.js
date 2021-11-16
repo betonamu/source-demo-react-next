@@ -1,33 +1,35 @@
-import React from "react";
-import LifeCycle from "./LifeCycle";
-import styles from "./Home.module.scss";
-import Slider from "./Slider";
+import React, { useEffect, useState } from "react";
+import CounterContext from "../../contexts/Counter/CounterContext";
 
-import Icon from "../../asstes/icons/icon-plus-44.svg";
+const Home = () => {
+    const [firstRender, setFirstRender] = useState(false);
 
-class Home extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: 0
+    //cannot break in forEach
+    
+    useEffect(() => {
+        let arr = Array.from(Array(10).keys());
+        for (let index = 0; index < arr.length; index++) {
+            console.log(index);
+            if (index === 5) {
+                break;
+            }
         }
-        //this.setNewNumber = this.setNewNumber.bind(this)
-    };
+        console.log("55555555");
+    }, [])
 
-    setNewNumber(that) {
-        that.setState({ data: that.state.data + 1 });
-
-        
-    }
-
-    render() {
-        return (
-            <>
-                <Slider />
-                <Icon/>
-            </>
-        );
-    }
+    return (
+        <div>
+            <div>Home</div>
+            <CounterContext.Consumer>
+                {(counter) =>
+                    <>
+                        <div>{counter.number}</div>
+                        <button onClick={() => counter.updateNumber()}>Increment</button>
+                    </>
+                }
+            </CounterContext.Consumer>
+        </div>
+    );
 }
 
 export default Home;
