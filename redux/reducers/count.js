@@ -7,16 +7,21 @@ const initState = {
 const counter = (state = initState, action) => {
   switch (action.type) {
     case counterActionTypes.INCREASE:
+      console.log(action);
       return {
         ...state,
         count: state.count + 1
       };
     case counterActionTypes.DECREASE:
+      console.log(action);
+
       return {
         ...state,
         count: state.count - 1
       };
     case counterActionTypes.RESET:
+      console.log(action);
+
       return {
         ...state,
         count: 0
