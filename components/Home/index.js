@@ -1,34 +1,19 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 
-import { homeActions, categoryActions } from "../../redux/actions";
-import Container from "../Common/Container";
-import FlashSale from "./FlashSale";
-import Product from "./Product";
-import Slider from "./Slider";
+import CounterContext from "../../contexts/Counter/CounterContext";
+import Container from "../../components/Common/Container";
 
 const Home = () => {
-    const dispatch = useDispatch();
-
-    const home = useSelector(state=>state.home);
-    // console.log('ádasd',home);
-
-    useEffect(() => {
-        dispatch(homeActions.getFlashSale());
-    }, []);
-
-    const product = useSelector(state=>state.home.getList);
-    
-    useEffect(() => {
-        dispatch(homeActions.getList());
-    }, []);
-   
     return (
-        
         <Container>
-            <Slider />
-            < FlashSale />
-            <Product product={product}/>
+            <CounterContext.Consumer>
+                {({ updateNumber, number }) =>
+                    <>
+                        <button onClick={() => updateNumber()}>INCREMENT</button>
+                        <b>{number}</b>
+                    </>
+                }
+            </CounterContext.Consumer>
         </Container>
     );
 }

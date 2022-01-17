@@ -1,31 +1,31 @@
-// import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-// import { counterActions } from "../../redux/actions";
+import { counterActions } from "../../redux/actions";
 
-// export const CounterNav = () => {
-// 	const dispatch = useDispatch();
+export const CounterNav = () => {
+	const dispatch = useDispatch();
 
-// 	const count = useSelector(store => store.counter.count);
+	const count = useSelector(store => store.counter.count);
 
-// 	// return (
-// 		<div className="counter-nav">
-// 			<div>{count}</div>
-// 			<div>
-// 				<button onClick={() => { dispatch(counterActions.decrement()); }}>
-// 					Decrease
-// 				</button>
+	return (
+		<div className="counter-nav">
+			<div>{count}</div>
+			<div>
+				<button onClick={() => { dispatch(counterActions.decrement()); }}>
+					Decrease
+				</button>
 
-// 				<button onClick={() => { dispatch(counterActions.reset()); }}>
-// 					Reset
-// 				</button>
+				<button onClick={() => { dispatch(counterActions.reset()); }}>
+					Reset
+				</button>
 
-// 				<button onClick={() => { dispatch(counterActions.increment()); }}>
-// 					Increase
-// 				</button>
-// 			</div>
-// 		</div>
-// 	);
-// };
+				<button onClick={() => { dispatch(counterActions.increment()); }}>
+					Increase
+				</button>
+			</div>
+		</div>
+	);
+};
 
-// export default CounterNav;
+export default CounterNav;

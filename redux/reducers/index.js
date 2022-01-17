@@ -1,15 +1,9 @@
 import { combineReducers } from "redux";
 
-import home from "./home";
-import main from "./main";
-import product from "./product";
-import category from "./category";
+import loading from "./loading";
 
 const rootReducer = combineReducers({
-    home,
-    main,
-    product,
-    category,
+    loading,
 });
 
 export default rootReducer;
