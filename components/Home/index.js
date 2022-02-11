@@ -2,6 +2,7 @@ import React from "react";
 
 import CounterContext from "../../contexts/Counter/CounterContext";
 import Container from "../../components/Common/Container";
+import CounterNav from "./Counter";
 
 const Home = () => {
     return (
@@ -14,6 +15,8 @@ const Home = () => {
                     </>
                 }
             </CounterContext.Consumer>
+
+            <CounterNav/>
         </Container>
     );
 }
