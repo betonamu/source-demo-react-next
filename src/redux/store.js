@@ -3,8 +3,8 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import {createWrapper } from 'next-redux-wrapper';
 import createSagaMiddleware from 'redux-saga'
 
-import rootSaga from '../redux/sagas';
-import rootReducer from '../redux/reducers';
+import rootSaga from './sagas';
+import rootReducer from './reducers';
 import { ssrMode } from '../constants';
 
 const getMiddleWare = (sagaMiddleware) => {

@@ -1,4 +1,4 @@
-import { loadingActions } from '../redux/actions';
+import { loadingActions } from './actions';
 import { call, put } from 'redux-saga/effects';
 import { handleApiResponse, sendRequest } from '../utils/api';
 

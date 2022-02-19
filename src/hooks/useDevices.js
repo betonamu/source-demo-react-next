@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { ssrMode } from "../constants/index";
+import { ssrMode } from "../constants";
 
 const calcDevices = (width) => {
     const isMobile = width <= 576;

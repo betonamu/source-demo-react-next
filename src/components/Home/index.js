@@ -1,7 +1,7 @@
 import React from "react";
 
 import CounterContext from "../../contexts/Counter/CounterContext";
-import Container from "../../components/Common/Container";
+import Container from "../Common/Container";
 import CounterNav from "./Counter";
 
 const Home = () => {
@@ -10,12 +10,11 @@ const Home = () => {
             <CounterContext.Consumer>
                 {({ updateNumber, number }) =>
                     <>
-                        <button onClick={() => updateNumber()}>INCREMENT</button>
+                        <button onClick={() => updateNumber()}>INCREMENT USING CONTEXT</button>
                         <b>{number}</b>
                     </>
                 }
             </CounterContext.Consumer>
-
             <CounterNav/>
         </Container>
     );

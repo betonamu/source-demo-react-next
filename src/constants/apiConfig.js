@@ -1,4 +1,4 @@
-import { pmcApiGatewayUrl } from '.'
+import { pmcApiGatewayUrl } from './index'
 const baseHeader = {
     'Content-Type': 'application/json'
 }
